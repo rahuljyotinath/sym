@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Common Spaces list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Door ID</th>
+                <th>Door Description</th>
+                <th>Center</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for space in spaces %}
+            <tr>
+                <td><a href="{{ path('app_common_show', { 'id': space.id }) }}">{{ space.id }}</a></td>
+                <td>{{ space.doorId }}</td>
+                <td>{{ space.doorDescription }}</td>
+                <td>{{ space.center }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('app_common_show', { 'id': space.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_common_edit', { 'id': space.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('app_common_new') }}">Create a new common space</a>
+        </li>
+    </ul>
+{% endblock %}

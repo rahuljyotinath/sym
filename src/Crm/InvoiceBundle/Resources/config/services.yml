@@ -1,0 +1,4 @@
+services:
+    crm_invoice.database.manager:
+        class: Crm\InvoiceBundle\Database\Manager
+        arguments: ['@doctrine']
