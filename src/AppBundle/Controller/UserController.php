@@ -108,6 +108,46 @@ class UserController extends Controller
 
     /**
      * @Secure(roles="ROLE_SUPER_ADMIN")
+     *
+     * @Route("/new", name="app_user_new")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function newAction(Request $request)
+    {
+        $user = new User();
+        $roles=[];
+        foreach (array_keys($this->getParameter('security.role_hierarchy.roles')) as $role)
+            $roles[$role]=$role;
+        $form = $this->createForm('AppBundle\Form\UserType', $user)
+            ->add('companies')
+            ->add('Roles', ChoiceType::class, [
+                    'choices' => $roles,
+                    'multiple' => true,
+                    'expanded' => true,
+                    'label' => 'Roles (ROLE_USER added automatically)',
+                    'required' => false
+                ]
+            )
+        ;
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('app_user_show', array('id' => $user->getId()));
+        }
+        return $this->render('user/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+            'page_title' => 'User Management'
+        ));
+    }
+
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
      * @Route("/{id}/edit", name="app_user_edit")
      * @Template()
      */
