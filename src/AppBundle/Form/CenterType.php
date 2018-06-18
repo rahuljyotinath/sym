@@ -1,13 +1,5 @@
 <?php
 
-/**
- * all code by me
- *
- * @version    Release: 1.0.0
- * @year       2018
- *
- */
-
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -36,6 +28,7 @@ class CenterType extends AbstractType
             ->add('phonenumber', FormType\TextType::class, ['required' => false])
        ;
     }
+
     /**
      * @return string
      */
@@ -43,6 +36,7 @@ class CenterType extends AbstractType
     {
         return 'business_center';
     }
+
     /**
      * @param OptionsResolver $resolver
      */

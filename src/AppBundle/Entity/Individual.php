@@ -1,135 +1,123 @@
 <?php
-/**
- * all code by me
- *
- * @copyright  Mohan P Sharma
- * @version    Release: 1.0.0
- * @year       2018
- *
- */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Individual
- *
- * @ORM\Table(name="individual")
  * @ORM\Entity
+ * @ORM\Table(name="individual")
  */
 class Individual
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="salutation", type="string", length=6, nullable=true)
+     * @var string|null
      */
     private $salutation;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="Titel", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $titel;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name_first", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $nameFirst;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name_middle", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $nameMiddle;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name_last", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $nameLast;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name_birth", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $nameBirth;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="Address", type="text", nullable=true)
+     * @var string|null
      */
     private $address;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="Plz", type="string", length=7)
+     * @var string
      */
     private $plz;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $city;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="email", type="string", length=255)
+     * @var string
      */
     private $email;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="tel", type="string", length=20)
+     * @var string
      */
     private $tel;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="mobile", type="string", length=15, nullable=true)
+     * @var string|null
      */
     private $mobile;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $picture;
 
     /**
-     * @var int|null
-     *
      * @ORM\Column(name="userid", type="integer", nullable=true)
+     * @var int|null
      */
     private $userid;
 
+    /**
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="Company", inversedBy="companies")
+     * @ORM\JoinTable(name="individuals_companies")
+     */
+    private $companies;
 
     /**
-     * Get id.
-     *
+     * Individual constructor.
+     */
+    public function __construct()
+    {
+        $this->companies= new \Doctrine\Common\Collections\ArrayCollection();
+        // your own logic
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -138,10 +126,7 @@ class Individual
     }
 
     /**
-     * Set salutation.
-     *
      * @param string|null $salutation
-     *
      * @return Individual
      */
     public function setSalutation($salutation = null)
@@ -152,8 +137,6 @@ class Individual
     }
 
     /**
-     * Get salutation.
-     *
      * @return string|null
      */
     public function getSalutation()
@@ -162,22 +145,16 @@ class Individual
     }
 
     /**
-     * Set titel.
-     *
      * @param string|null $titel
-     *
      * @return Individual
      */
     public function setTitel($titel = null)
     {
         $this->titel = $titel;
-
         return $this;
     }
 
     /**
-     * Get titel.
-     *
      * @return string|null
      */
     public function getTitel()
@@ -186,22 +163,16 @@ class Individual
     }
 
     /**
-     * Set nameFirst.
-     *
      * @param string|null $nameFirst
-     *
      * @return Individual
      */
     public function setNameFirst($nameFirst = null)
     {
         $this->nameFirst = $nameFirst;
-
         return $this;
     }
 
     /**
-     * Get nameFirst.
-     *
      * @return string|null
      */
     public function getNameFirst()
@@ -210,22 +181,16 @@ class Individual
     }
 
     /**
-     * Set nameMiddle.
-     *
      * @param string|null $nameMiddle
-     *
      * @return Individual
      */
     public function setNameMiddle($nameMiddle = null)
     {
         $this->nameMiddle = $nameMiddle;
-
         return $this;
     }
 
     /**
-     * Get nameMiddle.
-     *
      * @return string|null
      */
     public function getNameMiddle()
@@ -234,10 +199,7 @@ class Individual
     }
 
     /**
-     * Set nameLast.
-     *
      * @param string|null $nameLast
-     *
      * @return Individual
      */
     public function setNameLast($nameLast = null)
@@ -248,8 +210,6 @@ class Individual
     }
 
     /**
-     * Get nameLast.
-     *
      * @return string|null
      */
     public function getNameLast()
@@ -258,10 +218,7 @@ class Individual
     }
 
     /**
-     * Set nameBirth.
-     *
      * @param string|null $nameBirth
-     *
      * @return Individual
      */
     public function setNameBirth($nameBirth = null)
@@ -272,8 +229,6 @@ class Individual
     }
 
     /**
-     * Get nameBirth.
-     *
      * @return string|null
      */
     public function getNameBirth()
@@ -282,22 +237,16 @@ class Individual
     }
 
     /**
-     * Set address.
-     *
      * @param string|null $address
-     *
      * @return Individual
      */
     public function setAddress($address = null)
     {
         $this->address = $address;
-
         return $this;
     }
 
     /**
-     * Get address.
-     *
      * @return string|null
      */
     public function getAddress()
@@ -306,10 +255,7 @@ class Individual
     }
 
     /**
-     * Set plz.
-     *
      * @param string $plz
-     *
      * @return Individual
      */
     public function setPlz($plz)
@@ -320,8 +266,6 @@ class Individual
     }
 
     /**
-     * Get plz.
-     *
      * @return string
      */
     public function getPlz()
@@ -330,10 +274,7 @@ class Individual
     }
 
     /**
-     * Set city.
-     *
      * @param string|null $city
-     *
      * @return Individual
      */
     public function setCity($city = null)
@@ -344,8 +285,6 @@ class Individual
     }
 
     /**
-     * Get city.
-     *
      * @return string|null
      */
     public function getCity()
@@ -354,10 +293,7 @@ class Individual
     }
 
     /**
-     * Set email.
-     *
      * @param string $email
-     *
      * @return Individual
      */
     public function setEmail($email)
@@ -368,8 +304,6 @@ class Individual
     }
 
     /**
-     * Get email.
-     *
      * @return string
      */
     public function getEmail()
@@ -378,10 +312,7 @@ class Individual
     }
 
     /**
-     * Set tel.
-     *
      * @param string $tel
-     *
      * @return Individual
      */
     public function setTel($tel)
@@ -392,8 +323,6 @@ class Individual
     }
 
     /**
-     * Get tel.
-     *
      * @return string
      */
     public function getTel()
@@ -402,10 +331,7 @@ class Individual
     }
 
     /**
-     * Set userid
-     *
      * @param string $userid
-     *
      * @return Individual
      */
     public function setUserid($userid = null)
@@ -416,9 +342,7 @@ class Individual
     }
 
     /**
-     * Get userid.
-     *
-     * @return intger
+     * @return int
      */
     public function getUserid()
     {
@@ -426,10 +350,7 @@ class Individual
     }
 
     /**
-     * Set mobile.
-     *
      * @param string|null $mobile
-     *
      * @return Individual
      */
     public function setMobile($mobile = null)
@@ -438,6 +359,7 @@ class Individual
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -445,6 +367,7 @@ class Individual
     {
         return $this->companies;
     }
+
     /**
      * @param mixed $companies
      */
@@ -452,33 +375,22 @@ class Individual
     {
         $this->companies = $companies;
     }
-    /**
-     * Many Groups have Many Users.
-     * @ORM\ManyToMany(targetEntity="Company", inversedBy="companies")
-     * @ORM\JoinTable(name="individuals_companies")
-     */
-    private $companies;
-    public function addCompany(Company $tag)
+
+    public function addCompany(Company $company)
     {
-        $tag->addUser($this); // synchronously updating inverse side
-        $this->companies[] = $tag;
-    }
-    public function removeCompany(Company $article)
-    {
-        $this->companies->removeElement($article)  ;
+        $company->addUser($this); // synchronously updating inverse side
+        $this->companies[] = $company;
     }
 
     /**
-     * Individual constructor.
+     * @param Company $company
      */
-    public function __construct()
+    public function removeCompany(Company $company)
     {
-        $this->companies= new \Doctrine\Common\Collections\ArrayCollection();
-        // your own logic
+        $this->companies->removeElement($company)  ;
     }
+
     /**
-     * Get mobile.
-     *
      * @return string|null
      */
     public function getMobile()
@@ -487,22 +399,16 @@ class Individual
     }
 
     /**
-     * Set picture.
-     *
      * @param string|null $picture
-     *
      * @return Individual
      */
     public function setPicture($picture = null)
     {
         $this->picture = $picture;
-
         return $this;
     }
 
     /**
-     * Get picture.
-     *
      * @return string|null
      */
     public function getPicture()

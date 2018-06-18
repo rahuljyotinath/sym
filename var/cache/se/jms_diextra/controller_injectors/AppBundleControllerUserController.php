@@ -11,7 +11,7 @@ class UserController__JMSInjector
 {
     public static function inject($container) {
         require_once __DIR__ . '/../proxies/AppBundle-Controller-UserController.php';
-        $a = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('AppBundle\\Controller\\UserController' => array('listAction' => array(0 => 'security.access.method_interceptor'), 'showAction' => array(0 => 'security.access.method_interceptor'), 'editAction' => array(0 => 'security.access.method_interceptor'), 'deleteAction' => array(0 => 'security.access.method_interceptor'))));
+        $a = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('AppBundle\\Controller\\UserController' => array('listAction' => array(0 => 'security.access.method_interceptor'), 'showAction' => array(0 => 'security.access.method_interceptor'), 'newAction' => array(0 => 'security.access.method_interceptor'), 'editAction' => array(0 => 'security.access.method_interceptor'), 'deleteAction' => array(0 => 'security.access.method_interceptor'))));
         $instance = new \EnhancedProxyb3afb39a_37d2299dd9448dd5d77a179edee6d31ea4c3ee22\__CG__\AppBundle\Controller\UserController();
         $instance->__CGInterception__setLoader($a);
         $refProperty = new \ReflectionProperty('AppBundle\\Controller\\UserController', 'formFactory');

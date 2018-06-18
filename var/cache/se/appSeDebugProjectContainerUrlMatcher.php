@@ -313,90 +313,153 @@ class appSeDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBundl
                 return array (  '_controller' => 'AppBundle\\Controller\\GentelellaController::homepageAction',  '_route' => 'app_homepage',);
             }
 
-            if (0 === strpos($pathinfo, '/admin/users/temp')) {
-                // users_index
-                if ('/admin/users/temp' === $trimmedPathinfo) {
-                    if ('GET' !== $canonicalMethod) {
-                        $allow[] = 'GET';
-                        goto not_users_index;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($rawPathinfo.'/', 'users_index');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UserNewController::listAction',  '_route' => 'users_index',);
-                }
-                not_users_index:
-
-                // users_new
-                if ('/admin/users/temp/new' === $pathinfo) {
-                    if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                        $allow = array_merge($allow, array('GET', 'POST'));
-                        goto not_users_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UserNewController::newAction',  '_route' => 'users_new',);
-                }
-                not_users_new:
-
-                // users_show
-                if (preg_match('#^/admin/users/temp/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ('GET' !== $canonicalMethod) {
-                        $allow[] = 'GET';
-                        goto not_users_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'users_show')), array (  '_controller' => 'AppBundle\\Controller\\UserNewController::showAction',));
-                }
-                not_users_show:
-
-                // users_edit
-                if (preg_match('#^/admin/users/temp/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                        $allow = array_merge($allow, array('GET', 'POST'));
-                        goto not_users_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'users_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserNewController::editAction',));
-                }
-                not_users_edit:
-
-                // users_delete
-                if (preg_match('#^/admin/users/temp/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ('DELETE' !== $canonicalMethod) {
-                        $allow[] = 'DELETE';
-                        goto not_users_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'users_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserNewController::deleteAction',));
-                }
-                not_users_delete:
-
-            }
-
         }
 
         elseif (0 === strpos($pathinfo, '/ap')) {
-            if (0 === strpos($pathinfo, '/app/user')) {
-                // app_user_list
-                if ('/app/user/list' === $pathinfo) {
-                    return array (  '_controller' => 'AppBundle\\Controller\\UserController::listAction',  '_route' => 'app_user_list',);
+            if (0 === strpos($pathinfo, '/app')) {
+                if (0 === strpos($pathinfo, '/app/center')) {
+                    // app_center_list
+                    if ('/app/center/list' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\CenterController::listAction',  '_route' => 'app_center_list',);
+                    }
+
+                    // app_center_new
+                    if ('/app/center/new' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\CenterController::newAction',  '_route' => 'app_center_new',);
+                    }
+
+                    // app_center_show
+                    if (preg_match('#^/app/center/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_center_show')), array (  '_controller' => 'AppBundle\\Controller\\CenterController::showAction',));
+                    }
+
+                    // app_center_edit
+                    if (preg_match('#^/app/center/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_center_edit')), array (  '_controller' => 'AppBundle\\Controller\\CenterController::editAction',));
+                    }
+
+                    // app_center_delete
+                    if (preg_match('#^/app/center/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_center_delete')), array (  '_controller' => 'AppBundle\\Controller\\CenterController::deleteAction',));
+                    }
+
                 }
 
-                // app_user_show
-                if (preg_match('#^/app/user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_user_show')), array (  '_controller' => 'AppBundle\\Controller\\UserController::showAction',));
+                elseif (0 === strpos($pathinfo, '/app/common')) {
+                    // app_common_list
+                    if ('/app/common/list' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\CommonSpaceController::listAction',  '_route' => 'app_common_list',);
+                    }
+
+                    // app_common_new
+                    if ('/app/common/new' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\CommonSpaceController::newAction',  '_route' => 'app_common_new',);
+                    }
+
+                    // app_common_show
+                    if (preg_match('#^/app/common/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_common_show')), array (  '_controller' => 'AppBundle\\Controller\\CommonSpaceController::showAction',));
+                    }
+
+                    // app_common_edit
+                    if (preg_match('#^/app/common/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_common_edit')), array (  '_controller' => 'AppBundle\\Controller\\CommonSpaceController::editAction',));
+                    }
+
+                    // app_common_delete
+                    if (preg_match('#^/app/common/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_common_delete')), array (  '_controller' => 'AppBundle\\Controller\\CommonSpaceController::deleteAction',));
+                    }
+
                 }
 
-                // app_user_edit
-                if (preg_match('#^/app/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_user_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
+                elseif (0 === strpos($pathinfo, '/app/individual')) {
+                    // app_individual_list
+                    if ('/app/individual/list' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\IndividualController::listAction',  '_route' => 'app_individual_list',);
+                    }
+
+                    // app_individual_new
+                    if ('/app/individual/new' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\IndividualController::newAction',  '_route' => 'app_individual_new',);
+                    }
+
+                    // app_individual_show
+                    if (preg_match('#^/app/individual/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_individual_show')), array (  '_controller' => 'AppBundle\\Controller\\IndividualController::showAction',));
+                    }
+
+                    // app_individual_edit
+                    if (preg_match('#^/app/individual/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_individual_edit')), array (  '_controller' => 'AppBundle\\Controller\\IndividualController::editAction',));
+                    }
+
+                    // app_individual_delete
+                    if (preg_match('#^/app/individual/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_individual_delete')), array (  '_controller' => 'AppBundle\\Controller\\IndividualController::deleteAction',));
+                    }
+
+                    // app_individual_makeuser
+                    if (preg_match('#^/app/individual/(?P<id>[^/]++)/makeuser$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_individual_makeuser')), array (  '_controller' => 'AppBundle\\Controller\\IndividualController::makeuserAction',));
+                    }
+
                 }
 
-                // app_user_delete
-                if (preg_match('#^/app/user/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_user_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteAction',));
+                elseif (0 === strpos($pathinfo, '/app/private')) {
+                    // app_private_list
+                    if ('/app/private/list' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\PrivateSpaceController::listAction',  '_route' => 'app_private_list',);
+                    }
+
+                    // app_private_new
+                    if ('/app/private/new' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\PrivateSpaceController::newAction',  '_route' => 'app_private_new',);
+                    }
+
+                    // app_private_show
+                    if (preg_match('#^/app/private/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_private_show')), array (  '_controller' => 'AppBundle\\Controller\\PrivateSpaceController::showAction',));
+                    }
+
+                    // app_private_edit
+                    if (preg_match('#^/app/private/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_private_edit')), array (  '_controller' => 'AppBundle\\Controller\\PrivateSpaceController::editAction',));
+                    }
+
+                    // app_private_delete
+                    if (preg_match('#^/app/private/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_private_delete')), array (  '_controller' => 'AppBundle\\Controller\\PrivateSpaceController::deleteAction',));
+                    }
+
+                }
+
+                elseif (0 === strpos($pathinfo, '/app/user')) {
+                    // app_user_list
+                    if ('/app/user/list' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\UserController::listAction',  '_route' => 'app_user_list',);
+                    }
+
+                    // app_user_show
+                    if (preg_match('#^/app/user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_user_show')), array (  '_controller' => 'AppBundle\\Controller\\UserController::showAction',));
+                    }
+
+                    // app_user_new
+                    if ('/app/user/new' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\UserController::newAction',  '_route' => 'app_user_new',);
+                    }
+
+                    // app_user_edit
+                    if (preg_match('#^/app/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_user_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
+                    }
+
+                    // app_user_delete
+                    if (preg_match('#^/app/user/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_user_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteAction',));
+                    }
+
                 }
 
             }

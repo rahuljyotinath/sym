@@ -17,7 +17,6 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
             'top_content_header' => array($this, 'block_top_content_header'),
-            'page_title' => array($this, 'block_page_title'),
             'page_content' => array($this, 'block_page_content'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
@@ -47,7 +46,7 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
 
-";
+    ";
         // line 10
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 16
@@ -118,8 +117,7 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
         $this->displayBlock('addJavascripts', $context, $blocks);
         // line 75
         echo "</body>
-</html>
-";
+</html>";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
@@ -156,17 +154,17 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 11
-        echo "    <!-- Bootstrap -->
-    <link href=\"";
+        echo "        <!-- Bootstrap -->
+        <link href=\"";
         // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/vendors/bootstrap/dist/css/bootstrap.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
-    <!-- Font Awesome -->
-    <link href=\"";
+        <!-- Font Awesome -->
+        <link href=\"";
         // line 14
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/vendors/font-awesome/css/font-awesome.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
-";
+    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -185,44 +183,26 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "top_content_header"));
 
         // line 31
-        echo "                <div class=\"page-title\">
-                    <div class=\"title_left\">
-                   <h3>";
+        echo "                    <div class=\"page-title\">
+                        <div class=\"title_left\">
+                            <h3>";
         // line 33
-        $this->displayBlock('page_title', $context, $blocks);
-        // line 34
-        echo "                    </div>
+        echo twig_escape_filter($this->env, ((array_key_exists("page_title", $context)) ? ((isset($context["page_title"]) || array_key_exists("page_title", $context) ? $context["page_title"] : (function () { throw new Twig_Error_Runtime('Variable "page_title" does not exist.', 33, $this->source); })())) : ("")), "html", null, true);
+        echo "</h3>
+                        </div>
 
-                    <div class=\"title_right\">
-                        <div class=\"col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search\">
-                            <div class=\"input-group\">
-                                <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">
-                    <span class=\"input-group-btn\">
+                        <div class=\"title_right\">
+                            <div class=\"col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search\">
+                                <div class=\"input-group\">
+                                    <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">
+                                    <span class=\"input-group-btn\">
                       <button class=\"btn btn-default\" type=\"button\">Go!</button>
                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 ";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
-    // line 33
-    public function block_page_title($context, array $blocks = array())
-    {
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
-
-        echo "</h3>Page Title";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -350,7 +330,7 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
 
     public function getDebugInfo()
     {
-        return array (  325 => 74,  308 => 70,  296 => 67,  291 => 65,  286 => 63,  281 => 61,  278 => 60,  269 => 59,  252 => 51,  235 => 50,  217 => 33,  194 => 34,  192 => 33,  188 => 31,  179 => 30,  167 => 14,  162 => 12,  159 => 11,  150 => 10,  132 => 8,  120 => 75,  118 => 74,  114 => 73,  110 => 71,  108 => 70,  105 => 69,  103 => 59,  98 => 56,  96 => 55,  91 => 52,  88 => 51,  85 => 50,  83 => 49,  80 => 48,  78 => 30,  73 => 27,  70 => 26,  68 => 25,  58 => 18,  54 => 16,  52 => 10,  47 => 8,  38 => 1,);
+        return array (  305 => 74,  288 => 70,  276 => 67,  271 => 65,  266 => 63,  261 => 61,  258 => 60,  249 => 59,  232 => 51,  215 => 50,  190 => 33,  186 => 31,  177 => 30,  165 => 14,  160 => 12,  157 => 11,  148 => 10,  130 => 8,  119 => 75,  117 => 74,  113 => 73,  109 => 71,  107 => 70,  104 => 69,  102 => 59,  97 => 56,  95 => 55,  90 => 52,  87 => 51,  84 => 50,  82 => 49,  79 => 48,  77 => 30,  72 => 27,  69 => 26,  67 => 25,  57 => 18,  53 => 16,  51 => 10,  46 => 8,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -364,12 +344,12 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <title>{% block title %} {% endblock %}</title>
 
-{% block stylesheets %}
-    <!-- Bootstrap -->
-    <link href=\"{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}\" rel=\"stylesheet\">
-    <!-- Font Awesome -->
-    <link href=\"{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}\" rel=\"stylesheet\">
-{% endblock stylesheets %}
+    {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link href=\"{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}\" rel=\"stylesheet\">
+        <!-- Font Awesome -->
+        <link href=\"{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}\" rel=\"stylesheet\">
+    {% endblock stylesheets %}
 
     <!-- Custom Theme Style -->
     <link href=\"{{ asset('assets/css/custom.min.css') }}\" rel=\"stylesheet\">
@@ -385,22 +365,22 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
         <div class=\"right_col\" role=\"main\">
             <div class=\"\">
                 {% block top_content_header %}
-                <div class=\"page-title\">
-                    <div class=\"title_left\">
-                   <h3>{% block page_title %}</h3>Page Title{% endblock page_title %}
-                    </div>
+                    <div class=\"page-title\">
+                        <div class=\"title_left\">
+                            <h3>{{ page_title is defined ? page_title }}</h3>
+                        </div>
 
-                    <div class=\"title_right\">
-                        <div class=\"col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search\">
-                            <div class=\"input-group\">
-                                <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">
-                    <span class=\"input-group-btn\">
+                        <div class=\"title_right\">
+                            <div class=\"col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search\">
+                                <div class=\"input-group\">
+                                    <input type=\"text\" class=\"form-control\" placeholder=\"Search for...\">
+                                    <span class=\"input-group-btn\">
                       <button class=\"btn btn-default\" type=\"button\">Go!</button>
                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endblock top_content_header %}
                 <div class=\"clearfix\"></div>
                 {% include \"app/flashmessages.html.twig\" %}
@@ -430,7 +410,6 @@ class __TwigTemplate_80e924c7ce41dfc59409af75c4406fc93cefa0ce2ff90a751ef466d3b81
 <script src=\"{{ asset('assets/js/custom.min.js') }}\"></script>
 {% block addJavascripts %}{% endblock addJavascripts %}
 </body>
-</html>
-", "base.html.twig", "/Applications/XAMPP/xamppfiles/htdocs/xintegro/app/Resources/views/base.html.twig");
+</html>", "base.html.twig", "/Applications/XAMPP/xamppfiles/htdocs/xintegro/app/Resources/views/base.html.twig");
     }
 }

@@ -1,14 +1,5 @@
 <?php
 
-/**
- * all code by me
- *
- * @copyright  Mohan P sharma
- * @version    Release: 1.0.0
- * @year       2018
- *
- */
-
 namespace AppBundle\Controller;
 
 use AppBundle\Database\Manager as DatabaseManager;
@@ -176,7 +167,6 @@ class IndividualController extends Controller
     /**
      * @Route("/{id}/delete", name="app_individual_delete")
      * @Template()
-     *
      */
     public function deleteAction(Request $request, $id)
     {
@@ -204,8 +194,6 @@ class IndividualController extends Controller
     }
 
     /**
-     * Deletes a company entity.
-     *
      * @Route("/{id}/makeuser", name="app_individual_makeuser")
      */
     public function makeuserAction(Request $request, $id)
@@ -239,9 +227,7 @@ class IndividualController extends Controller
             $user->setPassword($this->generateRandomString());
 
             $entityManager->persist($user);
-
             $entityManager->flush();
-
 
             $entityManager = $this->getDoctrine()->getManager();
             $individual = $entityManager->getRepository(Individual::class)->find($id);
@@ -253,11 +239,9 @@ class IndividualController extends Controller
         }
         return $this->redirectToRoute('app_individual_list');
     }
+
     /**
-     * Creates a form to make user entity.
-     *
-     * @param $id The individual id
-     *
+     * @param $id individual id
      * @return \Symfony\Component\Form\Form The form
      */
     private function createUserForm($id)
@@ -270,9 +254,7 @@ class IndividualController extends Controller
     }
 
     /**
-     *
      * @param $length Length of password
-     *
      * @return String
      */
     public function generateRandomString($length = 16, $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')

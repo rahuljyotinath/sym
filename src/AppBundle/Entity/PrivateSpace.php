@@ -1,64 +1,46 @@
 <?php
-/**
- * all code by me
- *
- * @copyright  Mohan P Sharma
- * @version    Release: 1.0.0
- * @year       2018
- *
- */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * privateSpace
- *
- * @ORM\Table(name="private_space")
  * @ORM\Entity
+ * @ORM\Table(name="private_space")
  */
 class PrivateSpace
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * Many Private space have one business center.
      * @ORM\ManyToOne(targetEntity="BusinessCenter", inversedBy="center")
      */
     private $center;
 
     /**
-     * @var int
-     *
      * @ORM\Column(name="roomNumber", type="integer")
+     * @var int
      */
     private $roomNumber;
 
     /**
-     * @var int|null
-     *
      * @ORM\Column(name="doorId", type="integer", nullable=true)
+     * @var int|null
      */
     private $doorId;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="typeOfRoom", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $typeOfRoom;
 
-
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -67,10 +49,7 @@ class PrivateSpace
     }
 
     /**
-     * Set roomNumber.
-     *
      * @param int $centerId
-     *
      * @return privateSpace
      */
     public function setCenter($center)
@@ -86,11 +65,9 @@ class PrivateSpace
     {
         return $this->center;
     }
+
     /**
-     * Set roomNumber.
-     *
      * @param int $roomNumber
-     *
      * @return privateSpace
      */
     public function setRoomNumber($roomNumber)
@@ -101,8 +78,6 @@ class PrivateSpace
     }
 
     /**
-     * Get roomNumber.
-     *
      * @return int
      */
     public function getRoomNumber()
@@ -111,22 +86,16 @@ class PrivateSpace
     }
 
     /**
-     * Set doorId.
-     *
      * @param int|null $doorId
-     *
      * @return privateSpace
      */
     public function setDoorId($doorId = null)
     {
         $this->doorId = $doorId;
-
         return $this;
     }
 
     /**
-     * Get doorId.
-     *
      * @return int|null
      */
     public function getDoorId()
@@ -135,10 +104,7 @@ class PrivateSpace
     }
 
     /**
-     * Set typeOfRoom.
-     *
      * @param string|null $typeOfRoom
-     *
      * @return privateSpace
      */
     public function setTypeOfRoom($typeOfRoom = null)
@@ -149,8 +115,6 @@ class PrivateSpace
     }
 
     /**
-     * Get typeOfRoom.
-     *
      * @return string|null
      */
     public function getTypeOfRoom()

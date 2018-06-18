@@ -1,12 +1,5 @@
 <?php
 
-/**
- * all code by me
- *
- * @year       2016
- *
- */
-
 namespace AppBundle\Controller;
 
 use AppBundle\Database\Manager as DatabaseManager;
@@ -125,14 +118,12 @@ class PrivateSpaceController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Business Center entity.');
         }
-
         
         $privatespace = $entity;
         
         $editForm = $this->createForm('AppBundle\Form\PrivateSpaceType', $privatespace)
             ->add('center')
-            ->add('update', SubmitType::class, array('label' => 'Update Private Space', 'attr' => ['class' => 'btn-success']))
-       ;
+            ->add('update', SubmitType::class, array('label' => 'Update Private Space', 'attr' => ['class' => 'btn-success']));
 
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {

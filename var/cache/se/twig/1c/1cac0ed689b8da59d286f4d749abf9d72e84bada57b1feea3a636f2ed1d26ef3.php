@@ -104,80 +104,90 @@ class __TwigTemplate_397864620b6138c5c11787daec1b09eff7d047fd10ba52fcf01838dae26
         // line 24
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 24, $this->source); })()), "getTotalItemCount", array()), "html", null, true);
         echo "</span>
-        </div>
+            ";
+        // line 25
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 26
+            echo "                <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_new");
+            echo "\" class=\"btn btn-primary pull-right\" style=\"color: #000;\"> Create New User</a>
+            ";
+        }
+        // line 28
+        echo "        </div>
 
         <table id=\"datatable\" class=\"table table-striped table-bordered\">
             <thead>
             <tr>
                 <th ";
-        // line 30
-        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 30, $this->source); })()), "isSorted", array(0 => "a.id"), "method")) {
-            echo " class=\"sorted\"";
-        }
-        echo ">";
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 30, $this->source); })()), "Id", "a.id");
-        echo "</th>
-                <th ";
-        // line 31
-        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 31, $this->source); })()), "isSorted", array(0 => "a.email"), "method")) {
-            echo " class=\"sorted\"";
-        }
-        echo ">";
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 31, $this->source); })()), "Email", "a.email");
-        echo "</th>
-                <th ";
-        // line 32
-        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 32, $this->source); })()), "isSorted", array(0 => "a.username"), "method")) {
-            echo " class=\"sorted\"";
-        }
-        echo ">";
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 32, $this->source); })()), "Username", "a.username");
-        echo "</th>
-                <th ";
         // line 33
-        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 33, $this->source); })()), "isSorted", array(0 => "a.firstName"), "method")) {
+        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 33, $this->source); })()), "isSorted", array(0 => "a.id"), "method")) {
             echo " class=\"sorted\"";
         }
         echo ">";
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 33, $this->source); })()), "Firstname", "a.firstName");
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 33, $this->source); })()), "Id", "a.id");
         echo "</th>
                 <th ";
         // line 34
-        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 34, $this->source); })()), "isSorted", array(0 => "a.lastName"), "method")) {
+        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 34, $this->source); })()), "isSorted", array(0 => "a.email"), "method")) {
             echo " class=\"sorted\"";
         }
         echo ">";
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 34, $this->source); })()), "Lastname", "a.lastName");
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 34, $this->source); })()), "Email", "a.email");
+        echo "</th>
+                <th ";
+        // line 35
+        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 35, $this->source); })()), "isSorted", array(0 => "a.username"), "method")) {
+            echo " class=\"sorted\"";
+        }
+        echo ">";
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 35, $this->source); })()), "Username", "a.username");
+        echo "</th>
+                <th ";
+        // line 36
+        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 36, $this->source); })()), "isSorted", array(0 => "a.firstName"), "method")) {
+            echo " class=\"sorted\"";
+        }
+        echo ">";
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 36, $this->source); })()), "Firstname", "a.firstName");
+        echo "</th>
+                <th ";
+        // line 37
+        if (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 37, $this->source); })()), "isSorted", array(0 => "a.lastName"), "method")) {
+            echo " class=\"sorted\"";
+        }
+        echo ">";
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->sortable($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 37, $this->source); })()), "Lastname", "a.lastName");
         echo "</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             ";
-        // line 39
+        // line 42
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 39, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 42, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 40
+            // line 43
             echo "                <tr>
                     <td>";
-            // line 41
+            // line 44
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "id", array()), "html", null, true);
             echo "</td>
                     <td>";
-            // line 42
+            // line 45
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "email", array()), "html", null, true);
             echo "</td>
                     <td>";
-            // line 43
+            // line 46
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", array()), "html", null, true);
             echo "</td>
                     <td>";
-            // line 44
+            // line 47
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "firstName", array()), "html", null, true);
             echo "</td>
                     <td>";
-            // line 45
+            // line 48
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "lastName", array()), "html", null, true);
             echo "</td>
                     <td>
@@ -190,13 +200,13 @@ class __TwigTemplate_397864620b6138c5c11787daec1b09eff7d047fd10ba52fcf01838dae26
                             <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">
                                 <li>
                                     <a href=\"";
-            // line 55
+            // line 58
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_edit", array("id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", array()))), "html", null, true);
             echo "\">edit</a>
                                 </li>
                                 <li>
                                     <a href=\"";
-            // line 58
+            // line 61
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show", array("id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", array()))), "html", null, true);
             echo "\">show</a>
                                 </li>
@@ -209,13 +219,13 @@ class __TwigTemplate_397864620b6138c5c11787daec1b09eff7d047fd10ba52fcf01838dae26
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 65
+        // line 68
         echo "            </tbody>
         </table>
         <div class=\"navigation\">
             ";
-        // line 68
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 68, $this->source); })()));
+        // line 71
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new Twig_Error_Runtime('Variable "pagination" does not exist.', 71, $this->source); })()));
         echo "
         </div>
     </div>
@@ -280,7 +290,7 @@ class __TwigTemplate_397864620b6138c5c11787daec1b09eff7d047fd10ba52fcf01838dae26
 
     public function getDebugInfo()
     {
-        return array (  262 => 7,  253 => 6,  218 => 68,  213 => 65,  200 => 58,  194 => 55,  181 => 45,  177 => 44,  173 => 43,  169 => 42,  165 => 41,  162 => 40,  158 => 39,  146 => 34,  138 => 33,  130 => 32,  122 => 31,  114 => 30,  105 => 24,  96 => 18,  92 => 16,  90 => 15,  85 => 13,  78 => 8,  75 => 6,  66 => 5,  55 => 3,  46 => 2,  15 => 1,);
+        return array (  272 => 7,  263 => 6,  228 => 71,  223 => 68,  210 => 61,  204 => 58,  191 => 48,  187 => 47,  183 => 46,  179 => 45,  175 => 44,  172 => 43,  168 => 42,  156 => 37,  148 => 36,  140 => 35,  132 => 34,  124 => 33,  117 => 28,  111 => 26,  109 => 25,  105 => 24,  96 => 18,  92 => 16,  90 => 15,  85 => 13,  78 => 8,  75 => 6,  66 => 5,  55 => 3,  46 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -309,6 +319,9 @@ class __TwigTemplate_397864620b6138c5c11787daec1b09eff7d047fd10ba52fcf01838dae26
         </div>
         <div style=\"font-size: 20px;margin-bottom: 20px;\" class=\"pull-right\">
             <span class=\"label label-success label-as-badge\">count: {{ pagination.getTotalItemCount }}</span>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href=\"{{ path('app_user_new') }}\" class=\"btn btn-primary pull-right\" style=\"color: #000;\"> Create New User</a>
+            {% endif %}
         </div>
 
         <table id=\"datatable\" class=\"table table-striped table-bordered\">

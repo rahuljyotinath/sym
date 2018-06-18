@@ -1,29 +1,18 @@
 <?php
-/**
- * all code by me
- *
- * @copyright  Mohan P Sharma
- * @version    Release: 1.0.0
- * @year       2018
- *
- */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CommonSpace
- *
- * @ORM\Table(name="common_space")
  * @ORM\Entity
+ * @ORM\Table(name="common_space")
  */
 class CommonSpace
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
@@ -35,23 +24,18 @@ class CommonSpace
     private $center;
 
     /**
-     * @var int
-     *
      * @ORM\Column(name="doorID", type="integer")
+     * @var int
      */
     private $doorID;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="doorDescription", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $doorDescription;
 
-
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -60,22 +44,16 @@ class CommonSpace
     }
 
     /**
-     * Set center
-     *
      * @param int $center
-     *
      * @return CommonSpace
      */
     public function setCenter($center)
     {
         $this->center = $center;
-
         return $this;
     }
 
     /**
-     * Get center
-     *
      * @return int
      */
     public function getCenter()
@@ -84,22 +62,16 @@ class CommonSpace
     }
 
     /**
-     * Set doorID.
-     *
      * @param int $doorID
-     *
      * @return CommonSpace
      */
     public function setDoorID($doorID)
     {
         $this->doorID = $doorID;
-
         return $this;
     }
 
     /**
-     * Get doorID.
-     *
      * @return int
      */
     public function getDoorID()
@@ -108,22 +80,16 @@ class CommonSpace
     }
 
     /**
-     * Set doorDescription.
-     *
      * @param string|null $doorDescription
-     *
      * @return CommonSpace
      */
     public function setDoorDescription($doorDescription = null)
     {
         $this->doorDescription = $doorDescription;
-
         return $this;
     }
 
     /**
-     * Get doorDescription.
-     *
      * @return string|null
      */
     public function getDoorDescription()

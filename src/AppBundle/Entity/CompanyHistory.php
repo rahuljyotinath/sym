@@ -6,18 +6,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Company
- *
- * @ORM\Table(name="company_history")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompanyRepository")
+ * @ORM\Table(name="company_history")
  */
 class CompanyHistory
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
@@ -121,8 +117,6 @@ class CompanyHistory
 
 
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -131,10 +125,7 @@ class CompanyHistory
     }
 
     /**
-     * Set name.
-     *
      * @param string|null $name
-     *
      * @return Company
      */
     public function setName($name = null)
@@ -144,8 +135,6 @@ class CompanyHistory
     }
 
     /**
-     * Get name.
-     *
      * @return string|null
      */
     public function getName()
@@ -154,10 +143,7 @@ class CompanyHistory
     }
 
     /**
-     * Set adress.
-     *
      * @param string|null $adress
-     *
      * @return Company
      */
     public function setAdress($adress = null)
@@ -167,8 +153,6 @@ class CompanyHistory
     }
 
     /**
-     * Get adress.
-     *
      * @return string|null
      */
     public function getAdress()
@@ -177,10 +161,7 @@ class CompanyHistory
     }
 
     /**
-     * Set plz.
-     *
      * @param string|null $plz
-     *
      * @return Company
      */
     public function setPlz($plz = null)
@@ -190,8 +171,6 @@ class CompanyHistory
     }
 
     /**
-     * Get plz.
-     *
      * @return string|null
      */
     public function getPlz()
@@ -200,10 +179,7 @@ class CompanyHistory
     }
 
     /**
-     * Set city.
-     *
      * @param string|null $city
-     *
      * @return Company
      */
     public function setCity($city = null)
@@ -213,8 +189,6 @@ class CompanyHistory
     }
 
     /**
-     * Get city.
-     *
      * @return string|null
      */
     public function getCity()
@@ -223,10 +197,7 @@ class CompanyHistory
     }
 
     /**
-     * Set email.
-     *
      * @param string|null $email
-     *
      * @return Company
      */
     public function setEmail($email = null)
@@ -236,8 +207,6 @@ class CompanyHistory
     }
 
     /**
-     * Get email.
-     *
      * @return string|null
      */
     public function getEmail()
@@ -246,10 +215,7 @@ class CompanyHistory
     }
 
     /**
-     * Set tel.
-     *
      * @param string|null $tel
-     *
      * @return Company
      */
     public function setTel($tel = null)
@@ -259,8 +225,6 @@ class CompanyHistory
     }
 
     /**
-     * Get tel.
-     *
      * @return string|null
      */
     public function getTel()
@@ -269,10 +233,7 @@ class CompanyHistory
     }
 
     /**
-     * Set website.
-     *
      * @param string|null $website
-     *
      * @return Company
      */
     public function setWebsite($website = null)
@@ -282,8 +243,6 @@ class CompanyHistory
     }
 
     /**
-     * Get website.
-     *
      * @return string|null
      */
     public function getWebsite()

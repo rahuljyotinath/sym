@@ -6,40 +6,33 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Company
- *
- * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompanyRepository")
+ * @ORM\Table(name="company")
  */
 class Company
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="adress", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $adress;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="plz", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $plz;
 
@@ -54,6 +47,30 @@ class Company
      * @ORM\ManyToMany(targetEntity="Individual", mappedBy="companies")
      */
     private $individuals;
+
+    /**
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     * @var string|null
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @var string|null
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
+     * @var string|null
+     */
+    private $tel;
+
+    /**
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     * @var string|null
+     */
+    private $website;
 
     /**
      * Company constructor.
@@ -84,7 +101,6 @@ class Company
         $this->users->removeElement($article);
     }
 
-
     /**
      * @return mixed
      */
@@ -102,33 +118,6 @@ class Company
     }
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="city", type="string", length=255, nullable=true)
-     */
-    private $city;
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     */
-    private $email;
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
-     */
-    private $tel;
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="website", type="string", length=255, nullable=true)
-     */
-    private $website;
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -137,10 +126,7 @@ class Company
     }
 
     /**
-     * Set name.
-     *
      * @param string|null $name
-     *
      * @return Company
      */
     public function setName($name = null)
@@ -150,8 +136,6 @@ class Company
     }
 
     /**
-     * Get name.
-     *
      * @return string|null
      */
     public function getName()
@@ -160,10 +144,7 @@ class Company
     }
 
     /**
-     * Set adress.
-     *
      * @param string|null $adress
-     *
      * @return Company
      */
     public function setAdress($adress = null)
@@ -173,8 +154,6 @@ class Company
     }
 
     /**
-     * Get adress.
-     *
      * @return string|null
      */
     public function getAdress()
@@ -183,10 +162,7 @@ class Company
     }
 
     /**
-     * Set plz.
-     *
      * @param string|null $plz
-     *
      * @return Company
      */
     public function setPlz($plz = null)
@@ -196,8 +172,6 @@ class Company
     }
 
     /**
-     * Get plz.
-     *
      * @return string|null
      */
     public function getPlz()
@@ -206,10 +180,7 @@ class Company
     }
 
     /**
-     * Set city.
-     *
      * @param string|null $city
-     *
      * @return Company
      */
     public function setCity($city = null)
@@ -219,8 +190,6 @@ class Company
     }
 
     /**
-     * Get city.
-     *
      * @return string|null
      */
     public function getCity()
@@ -229,10 +198,7 @@ class Company
     }
 
     /**
-     * Set email.
-     *
      * @param string|null $email
-     *
      * @return Company
      */
     public function setEmail($email = null)
@@ -242,8 +208,6 @@ class Company
     }
 
     /**
-     * Get email.
-     *
      * @return string|null
      */
     public function getEmail()
@@ -252,10 +216,7 @@ class Company
     }
 
     /**
-     * Set tel.
-     *
      * @param string|null $tel
-     *
      * @return Company
      */
     public function setTel($tel = null)
@@ -265,8 +226,6 @@ class Company
     }
 
     /**
-     * Get tel.
-     *
      * @return string|null
      */
     public function getTel()
@@ -275,10 +234,7 @@ class Company
     }
 
     /**
-     * Set website.
-     *
      * @param string|null $website
-     *
      * @return Company
      */
     public function setWebsite($website = null)
@@ -288,8 +244,6 @@ class Company
     }
 
     /**
-     * Get website.
-     *
      * @return string|null
      */
     public function getWebsite()
@@ -297,6 +251,9 @@ class Company
         return $this->website;
     }
 
+    /**
+     * @return string|null
+     */
     public function __toString()
     {
         return $this->name;

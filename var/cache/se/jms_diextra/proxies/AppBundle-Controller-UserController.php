@@ -21,6 +21,15 @@ class UserController extends \AppBundle\Controller\UserController
         return $invocation->proceed();
     }
 
+    public function newAction(\Symfony\Component\HttpFoundation\Request $request)
+    {
+        $ref = new \ReflectionMethod('AppBundle\\Controller\\UserController', 'newAction');
+        $interceptors = $this->__CGInterception__loader->loadInterceptors($ref, $this, array($request));
+        $invocation = new \CG\Proxy\MethodInvocation($ref, $this, array($request), $interceptors);
+
+        return $invocation->proceed();
+    }
+
     public function listAction(\Symfony\Component\HttpFoundation\Request $request): array
     {
         $ref = new \ReflectionMethod('AppBundle\\Controller\\UserController', 'listAction');

@@ -34,6 +34,7 @@ class CommonSpaceType extends AbstractType
             ->add('doorDescription', FormType\TextType::class, ['required' => false])
        ;
     }
+
     /**
      * @return string
      */
@@ -41,6 +42,7 @@ class CommonSpaceType extends AbstractType
     {
         return 'common_space';
     }
+
     /**
      * @param OptionsResolver $resolver
      */

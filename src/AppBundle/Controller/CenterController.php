@@ -60,6 +60,7 @@ class CenterController extends Controller
     private $dbM;
 
     /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
      * @Route("/list", name="app_center_list")
      * @Template()
      * @param Request $request
@@ -76,6 +77,7 @@ class CenterController extends Controller
     }
 
     /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
      * @Route("/new", name="app_center_new")
      * @Template()
      * @param Request $request

@@ -1,12 +1,5 @@
 <?php
 
-/**
- * all code by me
- *
- * @year       2016
- *
- */
-
 namespace AppBundle\Controller;
 
 use AppBundle\Database\Manager as DatabaseManager;
@@ -149,7 +142,6 @@ class CommonSpaceController extends Controller
     /**
      * @Route("/{id}/delete", name="app_common_delete")
      * @Template()
-     *
      */
     public function deleteAction(Request $request, $id)
     {

@@ -1,66 +1,50 @@
 <?php
-/**
- * all code by me
- *
- * @copyright  Mohan P Sharma
- * @version    Release: 1.0.0
- * @year       2018
- *
- */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * BusinessCenter
- *
- * @ORM\Table(name="business_center")
  * @ORM\Entity
+ * @ORM\Table(name="business_center")
  */
 class BusinessCenter
 {
     /**
-     * @var int
-     *
+     * @@ORM\Id
      * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $city;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $address;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="pincode", type="string", length=10, nullable=true)
+     * @var string|null
      */
     private $pincode;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="phoneNumber", type="string", length=15, nullable=true)
+     * @var string|null
      */
     private $phoneNumber;
 
@@ -81,8 +65,6 @@ class BusinessCenter
     }
     
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -91,10 +73,7 @@ class BusinessCenter
     }
 
     /**
-     * Set name.
-     *
      * @param string|null $name
-     *
      * @return BusinessCenter
      */
     public function setName($name = null)
@@ -104,8 +83,6 @@ class BusinessCenter
     }
 
     /**
-     * Get name.
-     *
      * @return string|null
      */
     public function getName()
@@ -114,22 +91,16 @@ class BusinessCenter
     }
 
     /**
-     * Set city.
-     *
      * @param string|null $city
-     *
      * @return BusinessCenter
      */
     public function setCity($city = null)
     {
         $this->city = $city;
-
         return $this;
     }
 
     /**
-     * Get city.
-     *
      * @return string|null
      */
     public function getCity()
@@ -138,22 +109,16 @@ class BusinessCenter
     }
 
     /**
-     * Set address.
-     *
      * @param string|null $address
-     *
      * @return BusinessCenter
      */
     public function setAddress($address = null)
     {
         $this->address = $address;
-
         return $this;
     }
 
     /**
-     * Get address.
-     *
      * @return string|null
      */
     public function getAddress()
@@ -162,22 +127,16 @@ class BusinessCenter
     }
 
     /**
-     * Set pincode.
-     *
      * @param string|null $pincode
-     *
      * @return BusinessCenter
      */
     public function setPincode($pincode = null)
     {
         $this->pincode = $pincode;
-
         return $this;
     }
 
     /**
-     * Get pincode.
-     *
      * @return string|null
      */
     public function getPincode()
@@ -186,22 +145,16 @@ class BusinessCenter
     }
 
     /**
-     * Set phoneNumber.
-     *
      * @param string|null $phoneNumber
-     *
      * @return BusinessCenter
      */
     public function setPhoneNumber($phoneNumber = null)
     {
         $this->phoneNumber = $phoneNumber;
-
         return $this;
     }
 
     /**
-     * Get phoneNumber.
-     *
      * @return string|null
      */
     public function getPhoneNumber()
@@ -225,6 +178,9 @@ class BusinessCenter
         $this->privateSpace = $privateSpace;
     }
 
+    /**
+     * @return null|string
+     */
     public function __toString()
     {
         return $this->name;

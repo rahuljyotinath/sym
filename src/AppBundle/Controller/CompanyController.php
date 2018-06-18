@@ -6,15 +6,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 /**
- * Company controller.
- *
+ * Class CompanyController.
  * @Route("admin/company")
  */
 class CompanyController extends Controller
 {
     /**
-     * Lists all company entities.
-     *
      * @Route("/", name="company_index")
      * @Method("GET")
      */
@@ -27,9 +24,8 @@ class CompanyController extends Controller
             'page_title' => 'Company Management'
         ));
     }
+
     /**
-     * Creates a new company entity.
-     *
      * @Route("/new", name="company_new")
      * @Method({"GET", "POST"})
      */
@@ -50,9 +46,8 @@ class CompanyController extends Controller
             'page_title' => 'Company Management'
         ));
     }
+
     /**
-     * Finds and displays a company entity.
-     *
      * @Route("/{id}", name="company_show")
      * @Method("GET")
      */
@@ -65,9 +60,8 @@ class CompanyController extends Controller
             'page_title' => 'Company Management'
         ));
     }
+
     /**
-     * Displays a form to edit an existing company entity.
-     *
      * @Route("/{id}/edit", name="company_edit")
      * @Method({"GET", "POST"})
      */
@@ -87,9 +81,8 @@ class CompanyController extends Controller
             'page_title' => 'Company Management'
         ));
     }
+
     /**
-     * Deletes a company entity.
-     *
      * @Route("/{id}", name="company_delete")
      * @Method("DELETE")
      */
@@ -104,11 +97,9 @@ class CompanyController extends Controller
         }
         return $this->redirectToRoute('company_index');
     }
+
     /**
-     * Creates a form to delete a company entity.
-     *
      * @param Company $company The company entity
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Company $company)

@@ -31,6 +31,7 @@ class IndividualType extends AbstractType
      * @var array
      */
     private $roleHierarchy;
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -57,6 +58,7 @@ class IndividualType extends AbstractType
     {
         return 'individual';
     }
+
     /**
      * @param OptionsResolver $resolver
      */
