@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class BusinessCenter
 {
     /**
-     * @@ORM\Id
+     * @ORM\Id
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */

@@ -103,7 +103,7 @@ class Individual
 
     /**
      * Many Groups have Many Users.
-     * @ORM\ManyToMany(targetEntity="Company", inversedBy="companies")
+     * @ORM\ManyToMany(targetEntity="Company", inversedBy="individuals")
      * @ORM\JoinTable(name="individuals_companies")
      */
     private $companies;

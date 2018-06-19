@@ -19,48 +19,44 @@ class CompanyHistory
     private $id;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="adress", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $adress;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="plz", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $plz;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $city;
+
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $email;
+
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="tel", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $tel;
+
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     * @var string|null
      */
     private $website;
 
