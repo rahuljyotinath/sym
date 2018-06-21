@@ -1,17 +1,6 @@
 <?php
 
-/**
- * all code by me
- *
- * @copyright  Stefan H.G. Buchhofer
- * @version    Release: 1.0.0
- * @link       www.ilenvo-media.de
- * @email      ilenvo@me.com
- * @year       2016
- *
- */
-
-namespace AppBundle\Controller;
+namespace Xintegro\BusinessCenterBundle\Controller;
 
 use AppBundle\Database\Manager as DatabaseManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,14 +15,14 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type as FormType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use AppBundle\Entity\BusinessCenter;
+use AppBundle\Entity\PrivateSpace;
 
 /**
- * Class CenterController
- * @Route("/app/center")
+ * Class PrivateSpaceController
+ * @Route("/business/private")
  * @package Pferdiathek\BackendBundle\Controller
  */
-class CenterController extends Controller
+class PrivateSpaceController extends Controller
 {
     /**
      * @Inject("form.factory")
@@ -60,8 +49,7 @@ class CenterController extends Controller
     private $dbM;
 
     /**
-     * @Secure(roles="ROLE_SUPER_ADMIN")
-     * @Route("/list", name="app_center_list")
+     * @Route("/list", name="app_private_list")
      * @Template()
      * @param Request $request
      * @return Response
@@ -69,96 +57,95 @@ class CenterController extends Controller
     public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $centers = $em->getRepository('AppBundle:BusinessCenter')->findAll();
-        return $this->render('center/index.html.twig', array(
-            'centers' => $centers,
-            'page_title' => 'Business Center Management'
+        $spaces = $em->getRepository('AppBundle:PrivateSpace')->findAll();
+        return $this->render('privatespace/index.html.twig', array(
+            'spaces' => $spaces,
+            'page_title' => 'Private Space Management'
         ));
     }
 
     /**
-     * @Secure(roles="ROLE_SUPER_ADMIN")
-     * @Route("/new", name="app_center_new")
+     * @Route("/new", name="app_private_new")
      * @Template()
      * @param Request $request
      * @return Response
      */
     public function newAction(Request $request)
     {
-        $center = new BusinessCenter();
-        $form = $this->createForm('AppBundle\Form\CenterType', $center);
+        $privatespace = new PrivateSpace();
+        $form = $this->createForm('AppBundle\Form\PrivateSpaceType', $privatespace)
+                ->add('center');
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($center);
+            $em->persist($privatespace);
             $em->flush();
-            return $this->redirectToRoute('app_center_show', array('id' => $center->getId()));
+            return $this->redirectToRoute('app_private_show', array('id' => $privatespace->getId()));
         }
-        return $this->render('center/new.html.twig', array(
-            'center' => $center,
+        return $this->render('privatespace/new.html.twig', array(
+            'privatespace' => $privatespace,
             'form' => $form->createView(),
-            'page_title' => 'Business Center Management'
+            'page_title' => 'Private Space Management'
         ));
     }
 
     /** 
-     * @Route("/{id}/show", name="app_center_show")
+     * @Route("/{id}/show", name="app_private_show")
      * @Template()
      */
     public function showAction($id)
     {
-        $entity = $this->dbM->repository()->center()->find($id);
+        $entity = $this->dbM->repository()->privatespace()->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Business Center entity.');
+            throw $this->createNotFoundException('Unable to find Business Private Space entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        return $this->render('center/show.html.twig', array(
-            'center' => $entity,
-            'page_title' => 'Business Center Management'
+        return $this->render('privatespace/show.html.twig', array(
+            'privatespace' => $entity,
+            'page_title' => 'Private Space Management'
         ));
     }
 
     /**
-     * @Route("/{id}/edit", name="app_center_edit")
+     * @Route("/{id}/edit", name="app_private_edit")
      * @Template()
      */
     public function editAction(Request $request, $id)
     {
-        $entity = $this->dbM->repository()->center()->find($id);
+        $entity = $this->dbM->repository()->privatespace()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Business Center entity.');
         }
-
         
-        $center = $entity;
+        $privatespace = $entity;
         
-        $editForm = $this->createForm('AppBundle\Form\CenterType', $center)
-            ->add('update', SubmitType::class, array('label' => 'Update Business center', 'attr' => ['class' => 'btn-success']))
-       ;
+        $editForm = $this->createForm('AppBundle\Form\PrivateSpaceType', $privatespace)
+            ->add('center')
+            ->add('update', SubmitType::class, array('label' => 'Update Private Space', 'attr' => ['class' => 'btn-success']));
 
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('app_center_list', array('id' => $center->getId()));
+            return $this->redirectToRoute('app_private_list', array('id' => $privatespace->getId()));
         }
-        return $this->render('center/edit.html.twig', array(
-            'center' => $center,
+        return $this->render('privatespace/edit.html.twig', array(
+            'privatespace' => $privatespace,
             'edit_form' => $editForm->createView(),
-            'page_title' => 'Business Center Management'
+            'page_title' => 'Private Space Management'
         ));
     }
 
     /**
-     * @Route("/{id}/delete", name="app_center_delete")
+     * @Route("/{id}/delete", name="app_private_delete")
      * @Template()
      *
      */
     public function deleteAction(Request $request, $id)
     {
         $this->get('session')->getFlashBag()->add('error', 'Delete is currently deactivated!');
-        return $this->redirect($this->generateUrl('app_center_list'));
+        return $this->redirect($this->generateUrl('app_private_list'));
     }
 
     /**
@@ -170,7 +157,7 @@ class CenterController extends Controller
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', HiddenType::class)
             ->add('update', FormType\SubmitType::class, [
-                    'label' => 'Delete Center',
+                    'label' => 'Delete Private Space',
                     'attr' => [
                         'class' => 'btn-danger',
                         'onclick' => 'return confirm(\'Really Delete?\')'
