@@ -19,7 +19,7 @@ class CommonSpace
 
     /**
      * Many Private space have one business center.
-     * @ORM\ManyToOne(targetEntity="BusinessCenter", inversedBy="center")
+     * @ORM\ManyToOne(targetEntity="BusinessCenter", inversedBy="commonSpace")
      */
     private $center;
 

@@ -1,0 +1,4 @@
+services:
+#    xintegro_business_center.example:
+#        class: Xintegro\BusinessCenterBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

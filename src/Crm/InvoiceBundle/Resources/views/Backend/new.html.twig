@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>New Invoice</h1>
+
+{{ form_start(new_form) }}
+<form class="well" method="post" novalidate>
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="form-group">
+                {{ form_label(new_form.id) }}
+                {{ form_errors(new_form.id) }}
+                {{ form_widget(new_form.id) }}
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="form-group">
+                {{ form_label(new_form.customerId) }}
+                {{ form_errors(new_form.customerId) }}
+                {{ form_widget(new_form.customerId) }}
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="form-group">
+                {{ form_label(new_form.locale) }}
+                {{ form_errors(new_form.locale) }}
+                {{ form_widget(new_form.locale) }}
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="form-group">
+                {{ form_label(new_form.currency) }}
+                {{ form_errors(new_form.currency) }}
+                {{ form_widget(new_form.currency) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="invoicePositions-fields-list" style="margin:20px;"
+                 data-prototype="{{ form_widget(new_form.invoicePositions.vars.prototype)|e }}"
+                 data-widget-tags="{{ '<div class="item"></li>'|e }}">
+                {% for invoicePosition in new_form.invoicePositions %}
+                    <div class="item well">
+                        {{ form_errors(invoicePosition) }}
+                        {{ form_widget(invoicePosition) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {{ form_end(new_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('crm_invoice_invoice_list') }}">Back to the list</a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+        {% block addJavascripts %}
+    <script>
+        var $collectionHolder;
+        var $addTagLink = $('<a class="btn btn-danger" href="#" class="add_tag_link">Add Position</a>');
+        var $newLinkLi = $('<div class="item well"></div>').append($addTagLink);
+
+        jQuery(document).ready(function () {
+            $collectionHolder = jQuery('#invoicePositions-fields-list');
+            $collectionHolder.append($newLinkLi);
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+            console.log($collectionHolder);
+            $addTagLink.on('click', function (e) {
+                e.preventDefault();
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+
+            $collectionHolder = $('#invoicePositions-fields-list');
+
+            // add a delete link to all of the existing tag form li elements
+            $collectionHolder.find('.item').each(function () {
+                addTagFormDeleteLink($(this));
+            });
+
+            function addTagForm($collectionHolder, $newLinkLi) {
+                var prototype = $collectionHolder.data('prototype');
+                var index = $collectionHolder.data('index');
+                var newForm = prototype.replace(/__name__/g, index);
+                $collectionHolder.data('index', index + 1);
+                var $newFormLi = $('<div class="item well"></div>').append(newForm);
+                $newFormLi.append('<a href="#" class="remove-tag btn btn-danger">x</a>');
+                $newLinkLi.before($newFormLi);
+
+                $('.remove-tag').click(function (e) {
+                    e.preventDefault();
+                    $(this).parent().remove();
+                    return false;
+                });
+            }
+
+            function addTagFormDeleteLink($tagFormLi) {
+                var $removeFormA = $('<a href="#" class="remove-tag btn btn-danger">x</a>');
+                $tagFormLi.append($removeFormA);
+
+                $removeFormA.on('click', function (e) {
+                    e.preventDefault();
+                    $tagFormLi.remove();
+                });
+            }
+
+        });
+    </script>
+    {% endblock %}

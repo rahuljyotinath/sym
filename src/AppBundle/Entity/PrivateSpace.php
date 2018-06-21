@@ -18,7 +18,7 @@ class PrivateSpace
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BusinessCenter", inversedBy="center")
+     * @ORM\ManyToOne(targetEntity="BusinessCenter", inversedBy="privateSpace")
      */
     private $center;
 

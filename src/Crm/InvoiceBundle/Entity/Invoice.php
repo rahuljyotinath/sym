@@ -2,6 +2,7 @@
 
 namespace Crm\InvoiceBundle\Entity;
 
+use AppBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -184,6 +185,16 @@ class Invoice
      * )
      */
     private $invoicePositions;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(
+     *     targetEntity="AppBundle\Entity\User",
+     *     inversedBy="invoices"
+     * )
+     */
+    private $user;
 
     /**
      * Invoice constructor.
@@ -604,5 +615,23 @@ class Invoice
     {
         $this->updated = new \DateTime();
         $this->created = new \DateTime();
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     * @return Invoice
+     */
+    public function setUser(User $user): Invoice
+    {
+        $this->user = $user;
+        return $this;
     }
 }

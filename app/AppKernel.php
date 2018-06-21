@@ -55,6 +55,7 @@ class AppKernel extends Kernel
             new Dms\DocumentsBundle\DmsDocumentsBundle(),
             new Pim\VideoBundle\PimVideoBundle(),
             new Crm\InvoiceBundle\CrmInvoiceBundle(),
+            new Xintegro\BusinessCenterBundle\XintegroBusinessCenterBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'se', 'staging'], true)) {

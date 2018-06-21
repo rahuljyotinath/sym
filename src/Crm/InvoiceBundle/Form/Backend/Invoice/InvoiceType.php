@@ -12,7 +12,9 @@
 
 namespace Crm\InvoiceBundle\Form\Backend\Invoice;
 
+use AppBundle\Entity\User;
 use Crm\InvoiceBundle\Entity\Invoice;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type as FormType;
@@ -63,6 +65,10 @@ class InvoiceType extends AbstractType
                 'entry_type' => InvoicePositionType::class,
                 'allow_add' => true,
                 'allow_delete' => true
+            ))
+            ->add('user', EntityType::class, array(
+                'class' => User::class,
+                'choice_label' => 'username'
             ))
         ;
     }

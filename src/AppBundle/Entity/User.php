@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Crm\InvoiceBundle\Entity\Invoice;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -74,16 +76,28 @@ class User extends BaseUser
     private $companies;
 
     /**
+     * @var ArrayCollection|Invoice[]
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="Crm\InvoiceBundle\Entity\Invoice",
+     *     mappedBy="user",
+     *     cascade={"ALL"}
+     * )
+     */
+    private $invoices;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
-        $this->companies= new \Doctrine\Common\Collections\ArrayCollection();
-        if(null === $this->apiKey){
+        $this->companies = new ArrayCollection();
+        if (null === $this->apiKey) {
             $this->apiKey = strtoupper(md5(uniqid()));
         }
+        $this->invoices = new ArrayCollection();
+
         parent::__construct();
-        // your own logic
     }
 
     /**
@@ -133,7 +147,7 @@ class User extends BaseUser
      */
     public function removeCompany(Company $company)
     {
-        $this->companies->removeElement($company)  ;
+        $this->companies->removeElement($company);
     }
 
     /**
@@ -205,7 +219,7 @@ class User extends BaseUser
      */
     public function getFirstName()
     {
-        if($this->firstName){
+        if ($this->firstName) {
             return $this->firstName;
         }
         return '';
@@ -226,7 +240,7 @@ class User extends BaseUser
      */
     public function getLastName(): string
     {
-        if($this->lastName){
+        if ($this->lastName) {
             return $this->lastName;
         }
         return '';
@@ -258,5 +272,33 @@ class User extends BaseUser
     {
         $this->apiKey = $apiKey;
         return $this;
+    }
+
+    /**
+     * @param Invoice $invoice
+     */
+    public function addInvoice(Invoice $invoice)
+    {
+        if(!$this->invoices->contains($invoice)){
+            $this->invoices->add($invoice);
+        }
+    }
+
+    /**
+     * @param Invoice $invoice
+     */
+    public function removeInvoice(Invoice $invoice)
+    {
+        if($this->invoices->contains($invoice)){
+            $this->invoices->remove($invoice);
+        }
+    }
+
+    /**
+     * @return Invoice[]|ArrayCollection
+     */
+    public function getInvoices()
+    {
+        return $this->invoices;
     }
 }
