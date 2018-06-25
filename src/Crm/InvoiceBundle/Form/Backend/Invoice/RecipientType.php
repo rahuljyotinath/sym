@@ -31,11 +31,6 @@ class RecipientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', FormType\TextType::class, array(
-                'attr' => array(
-                    'readonly' => true,
-                )
-            ))
             ->add('customerId')
             ->add('userId')
             ->add('salutation')
@@ -48,7 +43,12 @@ class RecipientType extends AbstractType
             ->add('country')
             ->add('email')
             ->add('telephoneNumber')
-            ->add('birthday')
+            ->add('birthday',  FormType\DateType::class, [
+                'required' => true,
+                'attr' => [
+                    'format' => 'yyyy-mm-dd'
+                ]
+            ])
             ->add('gender');
     }
 

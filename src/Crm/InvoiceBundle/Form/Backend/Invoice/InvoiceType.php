@@ -58,8 +58,6 @@ class InvoiceType extends AbstractType
             ->add('cancellationPdfName')
             ->add('pdfName')
             ->add('pdfName')
-            ->add('created')
-            ->add('updated')
             ->add('recipient', RecipientType::class)
             ->add('invoicePositions', FormType\CollectionType::class, array(
                 'entry_type' => InvoicePositionType::class,
@@ -70,6 +68,7 @@ class InvoiceType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'username'
             ))
+            ->add('submit', FormType\SubmitType::class)
         ;
     }
 

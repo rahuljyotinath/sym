@@ -129,7 +129,7 @@ class InvoiceRecipient
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -137,7 +137,7 @@ class InvoiceRecipient
     /**
      * @return Invoice
      */
-    public function getInvoice(): Invoice
+    public function getInvoice()
     {
         return $this->invoice;
     }
@@ -153,7 +153,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getCustomerId(): string
+    public function getCustomerId()
     {
         return $this->customerId;
     }
@@ -169,7 +169,7 @@ class InvoiceRecipient
     /**
      * @return int
      */
-    public function getUserId(): int
+    public function getUserId()
     {
         return $this->userId;
     }
@@ -185,7 +185,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getSalutation(): string
+    public function getSalutation()
     {
         return $this->salutation;
     }
@@ -201,7 +201,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->firstName;
     }
@@ -217,7 +217,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->lastName;
     }
@@ -233,7 +233,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getCompany(): string
+    public function getCompany()
     {
         return $this->company;
     }
@@ -249,7 +249,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getStreet(): string
+    public function getStreet()
     {
         return $this->street;
     }
@@ -265,7 +265,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getZip(): string
+    public function getZip()
     {
         return $this->zip;
     }
@@ -281,7 +281,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity()
     {
         return $this->city;
     }
@@ -297,7 +297,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getCountry(): string
+    public function getCountry()
     {
         return $this->country;
     }
@@ -313,7 +313,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -329,7 +329,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getTelephoneNumber(): string
+    public function getTelephoneNumber()
     {
         return $this->telephoneNumber;
     }
@@ -361,7 +361,7 @@ class InvoiceRecipient
     /**
      * @return string
      */
-    public function getGender(): string
+    public function getGender()
     {
         return $this->gender;
     }

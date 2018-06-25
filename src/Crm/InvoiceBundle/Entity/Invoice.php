@@ -208,7 +208,7 @@ class Invoice
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -216,7 +216,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getCustomerId(): string
+    public function getCustomerId()
     {
         return $this->customerId;
     }
@@ -225,7 +225,7 @@ class Invoice
      * @param string $customerId
      * @return Invoice
      */
-    public function setCustomerId(string $customerId): Invoice
+    public function setCustomerId(string $customerId)
     {
         $this->customerId = $customerId;
         return $this;
@@ -234,7 +234,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getLocale(): string
+    public function getLocale()
     {
         return $this->locale;
     }
@@ -250,7 +250,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency()
     {
         return $this->currency;
     }
@@ -266,7 +266,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getInvoiceId(): string
+    public function getInvoiceId()
     {
         return $this->invoiceId;
     }
@@ -282,7 +282,7 @@ class Invoice
     /**
      * @return \DateTime
      */
-    public function getInvoiceDate(): \DateTime
+    public function getInvoiceDate()
     {
         return $this->invoiceDate;
     }
@@ -298,7 +298,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getPaymentTransactionId(): string
+    public function getPaymentTransactionId()
     {
         return $this->paymentTransactionId;
     }
@@ -314,7 +314,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getPaymentProvider(): string
+    public function getPaymentProvider()
     {
         return $this->paymentProvider;
     }
@@ -330,7 +330,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getPaymentMethod(): string
+    public function getPaymentMethod()
     {
         return $this->paymentMethod;
     }
@@ -346,7 +346,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getPaymentAccount(): string
+    public function getPaymentAccount()
     {
         return $this->paymentAccount;
     }
@@ -362,7 +362,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getPaymentStatus(): string
+    public function getPaymentStatus()
     {
         return $this->paymentStatus;
     }
@@ -371,7 +371,7 @@ class Invoice
      * @param string $paymentStatus
      * @return Invoice
      */
-    public function setPaymentStatus(string $paymentStatus): Invoice
+    public function setPaymentStatus(string $paymentStatus)
     {
         $this->paymentStatus = $paymentStatus;
         return $this;
@@ -380,7 +380,7 @@ class Invoice
     /**
      * @return float
      */
-    public function getNetPriceTotal(): float
+    public function getNetPriceTotal()
     {
         return $this->netPriceTotal;
     }
@@ -396,7 +396,7 @@ class Invoice
     /**
      * @return float
      */
-    public function getGrossPriceTotal(): float
+    public function getGrossPriceTotal()
     {
         return $this->grossPriceTotal;
     }
@@ -428,7 +428,7 @@ class Invoice
      *
      * @return array
      */
-    public function getVatPriceTotal(): array
+    public function getVatPriceTotal()
     {
         return $this->vatPriceTotal;
     }
@@ -436,7 +436,7 @@ class Invoice
     /**
      * @return bool
      */
-    public function isTaxable(): bool
+    public function isTaxable()
     {
         return $this->vatPriceTotal > 0.01;
     }
@@ -444,7 +444,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getFooterOne(): string
+    public function getFooterOne()
     {
         return $this->footerOne;
     }
@@ -453,7 +453,7 @@ class Invoice
      * @param string $footerOne
      * @return Invoice
      */
-    public function setFooterOne(string $footerOne): Invoice
+    public function setFooterOne(string $footerOne)
     {
         $this->footerOne = $footerOne;
         return $this;
@@ -462,7 +462,7 @@ class Invoice
     /**
      * @return string
      */
-    public function getFooterTwo(): string
+    public function getFooterTwo()
     {
         return $this->footerTwo;
     }
@@ -471,7 +471,7 @@ class Invoice
      * @param string $footerTwo
      * @return Invoice
      */
-    public function setFooterTwo(string $footerTwo): Invoice
+    public function setFooterTwo(string $footerTwo)
     {
         $this->footerTwo = $footerTwo;
         return $this;
@@ -489,7 +489,7 @@ class Invoice
      * @param string $invoiceNotes
      * @return Invoice
      */
-    public function setInvoiceNotes($invoiceNotes): Invoice
+    public function setInvoiceNotes($invoiceNotes)
     {
         $this->invoiceNotes = $invoiceNotes;
         return $this;
@@ -498,7 +498,7 @@ class Invoice
     /**
      * @return bool
      */
-    public function isCancellation(): bool
+    public function isCancellation()
     {
         return $this->cancellation;
     }
@@ -507,7 +507,7 @@ class Invoice
      * @param bool $cancellation
      * @return Invoice
      */
-    public function setCancellation(bool $cancellation): Invoice
+    public function setCancellation(bool $cancellation)
     {
         $this->cancellation = $cancellation;
         return $this;
@@ -534,7 +534,7 @@ class Invoice
     /**
      * @return InvoiceRecipient
      */
-    public function getRecipient(): InvoiceRecipient
+    public function getRecipient()
     {
         return $this->recipient;
     }
@@ -551,11 +551,21 @@ class Invoice
     /**
      * @param InvoicePosition $invoicePosition
      */
-    public function addInvoicePosition(InvoicePosition $invoicePosition)
+    public function addInvoicePosition($invoicePosition = null)
     {
-        $invoicePosition->setInvoice($this);
-        $this->invoicePositions->add($invoicePosition);
-        $this->addVatPrice($invoicePosition->getVatRate(), $invoicePosition->getVatPriceTotal());
+        if($invoicePosition) {
+            $invoicePosition->setInvoice($this);
+            $this->invoicePositions->add($invoicePosition);
+            $this->addVatPrice($invoicePosition->getVatRate(), $invoicePosition->getVatPriceTotal());
+        }
+    }
+
+    /**
+     * @param InvoicePosition $invoicePosition
+     */
+    public function removeInvoicePosition($invoicePosition = null)
+    {
+        $this->invoicePositions->remove($invoicePosition);
     }
 
     /**
@@ -620,7 +630,7 @@ class Invoice
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser()
     {
         return $this->user;
     }
@@ -629,7 +639,7 @@ class Invoice
      * @param User $user
      * @return Invoice
      */
-    public function setUser(User $user): Invoice
+    public function setUser(User $user)
     {
         $this->user = $user;
         return $this;

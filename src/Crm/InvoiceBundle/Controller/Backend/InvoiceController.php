@@ -13,8 +13,11 @@
 namespace Crm\InvoiceBundle\Controller\Backend;
 
 use Crm\InvoiceBundle\Database\Manager;
+use Crm\InvoiceBundle\Entity\Invoice;
+use Crm\InvoiceBundle\Entity\InvoiceRecipient;
 use Crm\InvoiceBundle\Form\Backend\Invoice\InvoiceFilterType;
 use Crm\InvoiceBundle\Form\Backend\Invoice\InvoiceType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation\Inject;
 use JMS\SecurityExtraBundle\Annotation\Secure;
@@ -89,14 +92,11 @@ class InvoiceController extends Controller
      */
     public function newAction(Request $request)
     {
-
         $newForm = $this->createForm(InvoiceType::class);
-
         $newForm->handleRequest($request);
 
-        if ($newForm->isValid() && $newForm->isSubmitted()) {
+        if ($newForm->isSubmitted()) {
             $invoiceEntity = $newForm->getData();
-
 
             $this->dbM->entityManager()->persist($invoiceEntity);
             $this->dbM->entityManager()->flush();
