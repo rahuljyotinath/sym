@@ -1,8 +1,4 @@
 .idea/
-var/logs/*
-var/cache/*
-var/sessions/*
 web/bundles/
 node_modules/*
-vendor/*
 bower_components/*
