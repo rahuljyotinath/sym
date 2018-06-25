@@ -2,3 +2,7 @@
 web/bundles/
 node_modules/*
 bower_components/*
+var/logs/*
+var/cache/*
+var/sessions/*
+vendor/*
