@@ -17,7 +17,7 @@ class BusinessCenter
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      * @var string|null
@@ -59,11 +59,14 @@ class BusinessCenter
     */
     private $privateSpace;
 
+    /**
+    * BusinessCenter constructor.
+    */
     public function __construct() {
-        $this->privateSpace = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->commonSpace = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->privateSpace = new ArrayCollection();
+        $this->commonSpace = new ArrayCollection();
     }
-    
+
     /**
      * @return int
      */

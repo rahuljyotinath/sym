@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>New Invoice - select receipient</h1>
+
+{{ form_start(select_form) }}
+<form class="well" method="post" novalidate>
+
+    <input type="submit" value="create invoice">
+    {{ form_end(select_form) }}
+
+
+    <ul>
+        <li>
+            <a href="{{ path('crm_invoice_invoice_list') }}">Back to the list</a>
+        </li>
+    </ul>
+</form>
+{% endblock %}

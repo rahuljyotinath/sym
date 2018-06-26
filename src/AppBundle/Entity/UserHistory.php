@@ -41,21 +41,25 @@ class UserHistory
      * @var string
      */
     private $plz;
+
     /**
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
      * @var string
      */
     private $city;
+
     /**
      * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      * @var string
      */
     private $telephone;
+
     /**
      * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
      * @var string
      */
     private $lastName;
+
     /**
      * @ORM\Column(name="api_key", type="string", length=32)
      * @var string
@@ -78,7 +82,6 @@ class UserHistory
         if (null === $this->apiKey) {
             $this->apiKey = strtoupper(md5(uniqid()));
         }
-        // your own logic
     }
 
     /**
@@ -207,7 +210,7 @@ class UserHistory
 
     /**
      * @param string $firstName
-     * @return User
+     * @return UserHistory
      */
     public function setFirstName($firstName)
     {
@@ -228,7 +231,7 @@ class UserHistory
 
     /**
      * @param string $lastName
-     * @return User
+     * @return UserHistory
      */
     public function setLastName(string $lastName): UserHistory
     {
@@ -246,7 +249,7 @@ class UserHistory
 
     /**
      * @param string $apiKey
-     * @return User
+     * @return UserHistory
      */
     public function setApiKey(string $apiKey): UserHistory
     {

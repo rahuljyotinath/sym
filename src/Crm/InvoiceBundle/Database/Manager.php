@@ -71,6 +71,19 @@ class Manager
     }
 
     /**
+     * @return Data\Factory
+     */
+    public function data(): Data\Factory
+    {
+        if (!isset($this->setter[__FUNCTION__])) {
+            $this->setter[__FUNCTION__] = new  Data\Factory($this->doctrineRegistry);
+        }
+
+        return $this->setter[__FUNCTION__];
+    }
+
+
+    /**
      * @return EntityManager
      */
     public function entityManager(): EntityManager

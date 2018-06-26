@@ -15,6 +15,7 @@ namespace Crm\InvoiceBundle\Controller\Backend;
 use Crm\InvoiceBundle\Database\Manager;
 use Crm\InvoiceBundle\Form\Backend\Invoice\InvoiceFilterType;
 use Crm\InvoiceBundle\Form\Backend\Invoice\InvoiceType;
+use Crm\InvoiceBundle\Form\Backend\Invoice\SelectRecipientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation\Inject;
 use JMS\SecurityExtraBundle\Annotation\Secure;
@@ -75,7 +76,45 @@ class InvoiceController extends Controller
         $query = $filterBuilder->getQuery();
         $pagination = $this->knpPaginator->paginate($query, $request->query->get('page', 1), 10);
 
-        return $this->render('CrmInvoiceBundle:Backend:list.html.twig', ['form' => $form->createView(), 'pagination' => $pagination]);
+        return $this->render('CrmInvoiceBundle:Backend:list.html.twig',
+            ['form' => $form->createView(), 'pagination' => $pagination]);
+    }
+
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
+     * @Route("/select/receipient", name="crm_invoice_invoice_select_receipient")
+     * @param Request $request
+     * @param string $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Doctrine\ORM\ORMException
+     */
+    public function selectReceipientAction(Request $request)
+    {
+
+        $newForm = $this->createForm(SelectRecipientType::class, null, [
+                'users' => $this->dbM->data()->formHelper()->getUserSelectArray(),
+                'company' => $this->dbM->data()->formHelper()->getCompanySelectArray(),
+                'individuals' => $this->dbM->data()->formHelper()->getIndividialSelectArray()
+                ]
+        );
+
+        $newForm->handleRequest($request);
+
+        if ($newForm->isValid() && $newForm->isSubmitted()) {
+            $selectionForm = $newForm->getData();
+
+           $mappedData = $this->dbM->data()->formHelper()->getReceipientDTO($selectionForm);
+
+
+            $this->get('session')->getFlashBag()->add('success', 'Invoice stored');
+            return $this->redirect($this->generateUrl('crm_invoice_invoice_list'));
+        }
+
+        return $this->render(
+            '@CrmInvoice/Backend/select_receipient.html.twig',
+            ['select_form' => $newForm->createView()]
+        );
     }
 
     /**
