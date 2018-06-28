@@ -121,7 +121,7 @@ class InvoiceController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $entity = $this->paymentDbM->repository()->invoice()->find($id);
+        $entity = $this->dbM->repository()->invoice()->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find invoice entity.');
         }
@@ -136,7 +136,7 @@ class InvoiceController extends Controller
             foreach ($invoicePositionsStored as $invoicePositionStored) {
 
                 if (!$invoiceEntity->getInvoicePositions()->contains($invoicePositionStored)) {
-                    $this->paymentDbM->getObjectManager()->remove($invoicePositionStored);
+                    $this->dbM->getObjectManager()->remove($invoicePositionStored);
                 }
             }
 
@@ -144,16 +144,16 @@ class InvoiceController extends Controller
                 $invoicePosition->setInvoice($invoiceEntity);
             }
 
-            $this->paymentDbM->getObjectManager()->persist($invoiceEntity);
-            $this->paymentDbM->getObjectManager()->flush();
+//            $this->dbM->entityManager()->persist($invoiceEntity);
+            $this->dbM->entityManager()->flush();
 
             $this->get('session')->getFlashBag()->add('success', 'Invoice updated');
-            return $this->redirect($this->generateUrl('shop_payment_invoice_list'));
+            return $this->redirect($this->generateUrl('crm_invoice_invoice_list'));
         }
 
         return $this->render(
-            '@CrmInvoice/Backend/list.html.twig',
-            ['entity' => $entity, 'edit_form' => $editForm->createView()]
+            '@CrmInvoice/Backend/new.html.twig',
+            ['entity' => $entity, 'new_form' => $editForm->createView()]
         );
     }
 }
