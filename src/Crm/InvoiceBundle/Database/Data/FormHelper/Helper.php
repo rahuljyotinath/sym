@@ -79,7 +79,7 @@ class Helper
          */
         $individuals = $this->doctrineRegistry->getRepository('AppBundle:Individual')->findAll();
         foreach ($individuals as $individual){
-            $individualArray[$individual->getId()] = $individual->getNameFirst()." ".$individual->getNameLast();
+            $individualArray[$individual->getNameFirst()." ".$individual->getNameLast()] = $individual->getId();
         }
         return $individualArray;
     }
@@ -90,6 +90,7 @@ class Helper
      */
     public function getReceipientDTO($formdata){
 
+
         $data = new ReceipientDTO();
         if(null !== $formdata['user']){
 
@@ -99,11 +100,11 @@ class Helper
 
         }
 
-        if(null !== $formdata['individuals']){
+        if(null !== $formdata['individual']){
             /**
              * @var Individual $individual
              */
-            $individual = $this->doctrineRegistry->getRepository('AppBundle:Individual')->find($formdata['individuals']);
+            $individual = $this->doctrineRegistry->getRepository('AppBundle:Individual')->find($formdata['individual']);
             $data->setFirstName($individual->getNameFirst());
 
         }

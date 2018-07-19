@@ -58,7 +58,7 @@ class AppKernel extends Kernel
             new Xintegro\BusinessCenterBundle\XintegroBusinessCenterBundle(),
         ];
 
-        if (in_array($this->getEnvironment(), ['dev', 'test', 'se', 'staging'], true)) {
+        if (in_array($this->getEnvironment(), ['dev', 'test', 'sb', 'staging'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();

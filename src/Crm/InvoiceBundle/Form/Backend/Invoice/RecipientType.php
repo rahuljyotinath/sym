@@ -31,11 +31,11 @@ class RecipientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', FormType\TextType::class, array(
+            /*->add('id', FormType\TextType::class, array(
                 'attr' => array(
                     'readonly' => true,
                 )
-            ))
+            ))*/
             ->add('customerId')
             ->add('userId')
             ->add('salutation')

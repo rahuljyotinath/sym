@@ -47,14 +47,14 @@ class Invoice
      *
      * @ORM\Column(name="invoice_id", type="string", length=32, nullable=true)
      */
-    private $invoiceId;
+    private $invoiceId = '';
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="invoice_date", type="date", nullable=true)
+     * @ORM\Column(name="invoice_date", type="datetime", nullable=true)
      */
-    private $invoiceDate = '';
+    private $invoiceDate;
 
     /**
      * @var string
@@ -282,7 +282,7 @@ class Invoice
     /**
      * @return \DateTime
      */
-    public function getInvoiceDate(): \DateTime
+    public function getInvoiceDate()
     {
         return $this->invoiceDate;
     }
@@ -534,7 +534,7 @@ class Invoice
     /**
      * @return InvoiceRecipient
      */
-    public function getRecipient(): InvoiceRecipient
+    public function getRecipient(): ?InvoiceRecipient
     {
         return $this->recipient;
     }
@@ -620,7 +620,7 @@ class Invoice
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }

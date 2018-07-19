@@ -39,10 +39,10 @@
             {% for invoice in pagination %}
                 <tr>
                     <td>{{ invoice.id }}</td>
-                    <td>{{ invoice.email }}</td>
-                    <td>{{ invoice.username }}</td>
-                    <td>{{ invoice.firstName }}</td>
-                    <td>{{ invoice.lastName }}</td>
+                    <td>{{ invoice.User.email }}</td>
+                    <td>{{ invoice.User.username }}</td>
+                    <td>{{ invoice.User.firstName }}</td>
+                    <td>{{ invoice.User.lastName }}</td>
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-danger dropdown-toggle btn-sm" type="button" id="dropdownMenu1"
@@ -52,10 +52,10 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="{{ path('app_user_edit', { 'id': user.id }) }}">edit</a>
+                                    <a href="{{ path('app_user_edit', { 'id': invoice.User.id }) }}">edit</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('app_user_show', { 'id': user.id }) }}">show</a>
+                                    <a href="{{ path('app_user_show', { 'id': invoice.User.id }) }}">show</a>
                                 </li>
                             </ul>
                         </div>

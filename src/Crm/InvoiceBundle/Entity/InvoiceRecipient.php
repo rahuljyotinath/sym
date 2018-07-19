@@ -36,9 +36,9 @@ class InvoiceRecipient
     private $customerId = '';
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Column(name="user_id", type="string", length=16)
      */
     private $userId = '';
 
@@ -54,14 +54,14 @@ class InvoiceRecipient
      *
      * @ORM\Column(name="first_name", type="string", length=255)
      */
-    private $firstName;
+    private $firstName ='';
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=255)
      */
-    private $lastName;
+    private $lastName ='';
 
     /**
      * @var string
@@ -75,7 +75,7 @@ class InvoiceRecipient
      *
      * @ORM\Column(name="street", type="string", length=255)
      */
-    private $street;
+    private $street = '';
 
     /**
      * @var string
@@ -167,17 +167,17 @@ class InvoiceRecipient
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getUserId(): int
+    public function getUserId(): string
     {
         return $this->userId;
     }
 
     /**
-     * @param int $userId
+     * @param string $userId
      */
-    public function setUserId(int $userId)
+    public function setUserId(string $userId)
     {
         $this->userId = $userId;
     }
