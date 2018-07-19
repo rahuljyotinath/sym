@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="row">
+    {# <div class="row">
         <div class="col-xs-12">
             <div id="invoicePositions-fields-list" style="margin:20px;"
                  data-prototype="{{ form_widget(new_form.invoicePositions.vars.prototype)|e }}"
@@ -48,7 +48,8 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </div> #}
+    
         {{ form_widget(new_form) }}
         <input class="btn btn-info" type="submit" value="Create" />
     {{ form_end(new_form) }}

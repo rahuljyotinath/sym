@@ -61,11 +61,11 @@ class InvoiceType extends AbstractType
             //->add('created')
             //->add('updated')
             ->add('recipient', RecipientType::class)
-            ->add('invoicePositions', FormType\CollectionType::class, array(
+            /*->add('invoicePositions', FormType\CollectionType::class, array(
                 'entry_type' => InvoicePositionType::class,
                 'allow_add' => true,
                 'allow_delete' => true
-            ))
+            ))*/
             ->add('user', EntityType::class, array(
                 'class' => User::class,
                 'choice_label' => 'username'
