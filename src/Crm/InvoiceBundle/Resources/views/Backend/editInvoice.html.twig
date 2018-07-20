@@ -3,34 +3,34 @@
 {% block body %}
     <h1>Edit Invoice</h1>
 
-{{ form_start(new_form) }}
+{{ form_start(edit_form) }}
     <div class="row">
         {# <div class="col-xs-3">
             <div class="form-group">
-                {{ form_label(new_form.id) }}
-                {{ form_errors(new_form.id) }}
-                {{ form_widget(new_form.id) }}
+                {{ form_label(edit_form.id) }}
+                {{ form_errors(edit_form.id) }}
+                {{ form_widget(edit_form.id) }}
             </div>
         </div> #}
         <div class="col-xs-4">
             <div class="form-group">
-                {{ form_label(new_form.customerId) }}
-                {{ form_errors(new_form.customerId) }}
-                {{ form_widget(new_form.customerId) }}
+                {{ form_label(edit_form.customerId) }}
+                {{ form_errors(edit_form.customerId) }}
+                {{ form_widget(edit_form.customerId) }}
             </div>
         </div>
         <div class="col-xs-4">
             <div class="form-group">
-                {{ form_label(new_form.locale) }}
-                {{ form_errors(new_form.locale) }}
-                {{ form_widget(new_form.locale) }}
+                {{ form_label(edit_form.locale) }}
+                {{ form_errors(edit_form.locale) }}
+                {{ form_widget(edit_form.locale) }}
             </div>
         </div>
         <div class="col-xs-4">
             <div class="form-group">
-                {{ form_label(new_form.currency) }}
-                {{ form_errors(new_form.currency) }}
-                {{ form_widget(new_form.currency) }}
+                {{ form_label(edit_form.currency) }}
+                {{ form_errors(edit_form.currency) }}
+                {{ form_widget(edit_form.currency) }}
             </div>
         </div>
     </div>
@@ -38,9 +38,9 @@
     {# <div class="row">
         <div class="col-xs-12">
             <div id="invoicePositions-fields-list" style="margin:20px;"
-                 data-prototype="{{ form_widget(new_form.invoicePositions.vars.prototype)|e }}"
+                 data-prototype="{{ form_widget(edit_form.invoicePositions.vars.prototype)|e }}"
                  data-widget-tags="{{ '<div class="item"></li>'|e }}">
-                {% for invoicePosition in new_form.invoicePositions %}
+                {% for invoicePosition in edit_form.invoicePositions %}
                     <div class="item well">
                         {{ form_errors(invoicePosition) }}
                         {{ form_widget(invoicePosition) }}
@@ -50,9 +50,9 @@
         </div>
     </div> #}
     
-        {{ form_widget(new_form) }}
+        {{ form_widget(edit_form) }}
         <input class="btn btn-info" type="submit" value="Edit" />
-    {{ form_end(new_form) }}
+    {{ form_end(edit_form) }}
 
     <ul>
         <li>

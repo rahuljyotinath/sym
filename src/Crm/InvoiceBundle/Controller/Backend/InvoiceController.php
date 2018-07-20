@@ -196,7 +196,7 @@ class InvoiceController extends Controller
 
         return $this->render(
             '@CrmInvoice/Backend/editInvoice.html.twig',
-            ['entity' => $entity, 'new_form' => $editForm->createView()]
+            ['entity' => $entity, 'edit_form' => $editForm->createView()]
         );
     }
 }
