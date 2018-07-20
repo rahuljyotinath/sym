@@ -7,3 +7,4 @@ web/bundles/assets/
 node_modules/*
 vendor/*
 bower_components/*
+debug.log
