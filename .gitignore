@@ -3,6 +3,7 @@ var/logs/*
 var/cache/*
 var/sessions/*
 web/bundles/
+web/bundles/assets/
 node_modules/*
 vendor/*
 bower_components/*
