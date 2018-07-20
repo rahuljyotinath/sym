@@ -175,6 +175,7 @@ class InvoiceController extends Controller
 
             $this->dbM->entityManager()->persist($invoiceEntity);
             $this->dbM->entityManager()->flush();
+            
             /*foreach ($invoicePositionsStored as $invoicePositionStored) {
 
                 if (!$invoiceEntity->getInvoicePositions()->contains($invoicePositionStored)) {

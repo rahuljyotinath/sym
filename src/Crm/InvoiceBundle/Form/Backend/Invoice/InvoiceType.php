@@ -57,7 +57,6 @@ class InvoiceType extends AbstractType
             ->add('cancellation')
             ->add('cancellationPdfName')
             ->add('pdfName')
-            ->add('pdfName')
             //->add('created')
             //->add('updated')
             ->add('recipient', RecipientType::class)
