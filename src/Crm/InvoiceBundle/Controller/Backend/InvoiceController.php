@@ -221,5 +221,21 @@ class InvoiceController extends Controller
         echo get_class($entity); die;
     }
     
-   
+    
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
+     * @Route("/invoice-confirmation/{id}", name="crm_invoice_invoice_confirmation")
+     * @param Request $request
+     * @return Response
+     */
+    public function confirmationAction(Request $request, $id)
+    {
+        $entity = $this->dbM->repository()->invoice()->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find invoice entity.');
+        }
+        
+        return $response = $this->render('CrmInvoiceBundle:Backend:confirmation.html.twig');
+        
+    }
 }
