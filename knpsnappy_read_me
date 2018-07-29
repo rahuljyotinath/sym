@@ -1,0 +1,41 @@
+install wkhtmltox
+sudo apt-get install xvfb
+
+
+1. sudo wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+2. tar xf  wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+3. cd ./wkhtmltox/bin/
+
+4. sudo mv wkhtmltopdf /usr/bin/wkhtmltox/wkhtmltopdf
+
+
+install knpsnappypdf bundle
+
+1. sudo composer require "knplabs/knp-snappy-bundle":"1.5.2"
+
+
+2. Register  KnpSnappy Bundle in AppKernel
+   // app/AppKernel.php
+   new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+
+3. set configuration in config file
+// app/config/config.yml
+pdf:
+        enabled:    true
+        binary:     /usr/bin/xvfb-run /usr/bin/wkhtmltox/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    
+            lowquality: false
+            page-size: A4
+            dpi: 300
+            image-quality: 80
+            margin-left: 10mm
+            margin-right: 10mm
+            margin-top: 10mm
+            margin-bottom: 10mm
+    image:
+        enabled:    true
+        binary:     /usr/bin/xvfb-run /usr/bin/wkhtmltox/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []
+

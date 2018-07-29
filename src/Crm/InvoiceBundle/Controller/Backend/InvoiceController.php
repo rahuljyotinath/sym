@@ -199,4 +199,27 @@ class InvoiceController extends Controller
             ['entity' => $entity, 'edit_form' => $editForm->createView()]
         );
     }
+    
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
+     * @Route("/invoice-pdf/{id}", name="crm_invoice_invoice_pdf")
+     * @param Request $request
+     * @return Response
+     */
+    public function pdfAction(Request $request, $id)
+    {
+        $entity = $this->dbM->repository()->invoice()->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find invoice entity.');
+        }
+        
+        $pdf_path = $this->getParameter('pdf_path');
+        $filepathname = $pdf_path.sha1(time()).'.pdf';
+        $snappy = $this->get('knp_snappy.pdf');
+        $body = $this->renderView('CrmInvoiceBundle:Backend:invoicePdf.html.twig');
+        $snappy->generateFromHtml($body,$filepathname);
+        echo get_class($entity); die;
+    }
+    
+   
 }
