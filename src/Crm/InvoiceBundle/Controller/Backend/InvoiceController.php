@@ -13,6 +13,7 @@
 namespace Crm\InvoiceBundle\Controller\Backend;
 
 use Crm\InvoiceBundle\Database\Manager;
+use Crm\InvoiceBundle\Entity\Invoice;
 use Crm\InvoiceBundle\Form\Backend\Invoice\InvoiceFilterType;
 use Crm\InvoiceBundle\Form\Backend\Invoice\InvoiceType;
 use Crm\InvoiceBundle\Form\Backend\Invoice\SelectRecipientType;
@@ -96,7 +97,7 @@ class InvoiceController extends Controller
                 'users' => $this->dbM->data()->formHelper()->getUserSelectArray(),
                 'company' => $this->dbM->data()->formHelper()->getCompanySelectArray(),
                 'individuals' => $this->dbM->data()->formHelper()->getIndividialSelectArray()
-                ]
+            ]
         );
 
         $newForm->handleRequest($request);
@@ -104,7 +105,7 @@ class InvoiceController extends Controller
         if ($newForm->isValid() && $newForm->isSubmitted()) {
             $selectionForm = $newForm->getData();
 
-           $mappedData = $this->dbM->data()->formHelper()->getReceipientDTO($selectionForm);
+            $mappedData = $this->dbM->data()->formHelper()->getReceipientDTO($selectionForm);
 
 
             $this->get('session')->getFlashBag()->add('success', 'Invoice stored');
@@ -129,11 +130,13 @@ class InvoiceController extends Controller
     public function newAction(Request $request)
     {
 
+
         $newForm = $this->createForm(InvoiceType::class);
 
         $newForm->handleRequest($request);
 
         if ($newForm->isValid() && $newForm->isSubmitted()) {
+
             $invoiceEntity = $newForm->getData();
 
 
@@ -164,8 +167,8 @@ class InvoiceController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find invoice entity.');
         }
-        //$invoicePositionsStored = new ArrayCollection($entity->getInvoicePositions()->toArray());
-        
+        $invoicePositionsStored = new ArrayCollection($entity->getInvoicePositions()->toArray());
+
         $editForm = $this->createForm(InvoiceType::class, $entity);
 
         $editForm->handleRequest($request);
@@ -173,10 +176,8 @@ class InvoiceController extends Controller
         if ($editForm->isValid() && $editForm->isSubmitted()) {
             $invoiceEntity = $editForm->getData();
 
-            $this->dbM->entityManager()->persist($invoiceEntity);
-            $this->dbM->entityManager()->flush();
-            
-            /*foreach ($invoicePositionsStored as $invoicePositionStored) {
+
+            foreach ($invoicePositionsStored as $invoicePositionStored) {
 
                 if (!$invoiceEntity->getInvoicePositions()->contains($invoicePositionStored)) {
                     $this->paymentDbM->getObjectManager()->remove($invoicePositionStored);
@@ -185,10 +186,11 @@ class InvoiceController extends Controller
 
             foreach ($invoiceEntity->getInvoicePositions() as $invoicePosition) {
                 $invoicePosition->setInvoice($invoiceEntity);
-            }*/
+            }
 
-            //$this->paymentDbM->getObjectManager()->persist($invoiceEntity);
-            //$this->paymentDbM->getObjectManager()->flush();
+            $this->dbM->entityManager()->persist($invoiceEntity);
+            $this->dbM->entityManager()->flush();
+
             //echo get_class($entity); die;
             $this->get('session')->getFlashBag()->add('success', 'Invoice updated');
             return $this->redirect($this->generateUrl('crm_invoice_invoice_list'));
@@ -199,29 +201,34 @@ class InvoiceController extends Controller
             ['entity' => $entity, 'edit_form' => $editForm->createView()]
         );
     }
-    
+
     /**
      * @Secure(roles="ROLE_SUPER_ADMIN")
-     * @Route("/invoice-pdf/{id}", name="crm_invoice_invoice_pdf")
+     * @Route("/invoice-pdf/{id}", name="crm_invoice_invoice_generate_pdf")
      * @param Request $request
      * @return Response
      */
     public function pdfAction(Request $request, $id)
     {
-        $entity = $this->dbM->repository()->invoice()->find($id);
-        if (!$entity) {
+        $invoiceEntity = $this->dbM->repository()->invoice()->find($id);
+        if (!$invoiceEntity) {
             throw $this->createNotFoundException('Unable to find invoice entity.');
         }
-        
-        $pdf_path = $this->getParameter('pdf_path');
+
+        /**
+         * @var Invoice $invoiceEntity
+         */
+
+        $pdf_path = $this->container->getParameter('pdf_store_path');
         $filepathname = $pdf_path.sha1(time()).'.pdf';
         $snappy = $this->get('knp_snappy.pdf');
-        $body = $this->renderView('CrmInvoiceBundle:Backend:invoicePdf.html.twig');
+        $body = $this->renderView('CrmInvoiceBundle:Backend:invoicePdf.html.twig',array('entity' => $invoiceEntity));
         $snappy->generateFromHtml($body,$filepathname);
-        echo get_class($entity); die;
+        $this->get('session')->getFlashBag()->add('success', 'PDF generated');
+        return $this->redirect($this->generateUrl('crm_invoice_invoice_list'));
     }
-    
-    
+
+
     /**
      * @Secure(roles="ROLE_SUPER_ADMIN")
      * @Route("/invoice-confirmation/{id}", name="crm_invoice_invoice_confirmation")
@@ -234,8 +241,8 @@ class InvoiceController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find invoice entity.');
         }
-        
+
         return $response = $this->render('CrmInvoiceBundle:Backend:confirmation.html.twig');
-        
+
     }
 }

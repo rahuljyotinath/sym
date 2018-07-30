@@ -1,178 +1,178 @@
-	{% extends "app/base.html.twig" %}
+{% extends "app/base.html.twig" %}
 
 	{% block page_content %}
-	    {% block top_content_header %}
+        {% block top_content_header %}
 
-	    {% endblock %}
-	    <div class="container pdf-invoice">
-		    <!-- Header -->
-		    <div class="pl20">
-			    <div>        
-					<div class="mybutton">
-						<button class="btn btn-success">confirm</button>
-						<button class="btn btn-danger">cancel</button>
-					</div>
-				    <div class="logo">
-				    	<img src="{{ app.request.schemeAndHttpHost ~asset('assets/pdf/image/logo.png') }}" height="104" alt="Blue Office Lounge" align="left">
-				    </div>
-				    <div class="invoice-num">
-				    	<div class="mt">Invoice Number : INV-00549</div>
-				        <div class="mt">Total Amount : € 594.88</div>
-				    </div>
-			    	<div style="clear:both;"></div>
-			    </div>
-		    </div>
-		    <!-- Header -->
+        {% endblock %}
+        <div class="container pdf-invoice">
+            <!-- Header -->
+            <div class="pl20">
+                <div>
+                    <div class="mybutton">
+                        <button class="btn btn-success">confirm</button>
+                        <button class="btn btn-danger">cancel</button>
+                    </div>
+                    <div class="logo">
+                        <img src="{{ app.request.schemeAndHttpHost ~asset('assets/pdf/image/logo.png') }}" height="104" alt="Blue Office Lounge" align="left">
+                    </div>
+                    <div class="invoice-num">
+                        <div class="mt">Invoice Number : INV-00549</div>
+                        <div class="mt">Total Amount : € 594.88</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <!-- Header -->
 
-	    	<!-- Body -->
-	    	<div class="pl20">
-		        <div>
-		            <div class="invoice-sender">
-		                <div class="invoice-sender-head">B & G Office club Gmbh</div>
-		                <div class="invoice-sender-para">
-		                    Handelregister HRB 82319
-		                    <br/> Steuer Nr 206/5907/1339
-		                    <br/> Bonn , 53173
-		                    <br/> Germany
-		                </div>
-		            </div>
-		            
-					<div style="clear:both; "></div>
-				</div>
-				<div>
-					<div class="invoice-bill-section">
-						<div class="invoice-bill ">Against whom to bill </div>
-						<div class="mt5 ">
-							Euro collect GmbH<br/>
-							Herr Eduard Muller<br/>
-							monheim am Rhein<br/>
-							70789 NRW<br/>
-							Germany
-						</div>
-					</div>
-					<div class="invoice-section ">
-						<div class="invoice-data ">
-							Invoice Date:
-						</div>
-						<div class="invoice-data ">
-							28-07-2018
-						</div>
-		
-						<div class="invoice-data ">
-							Time to pay:
-						</div>
-						<div class="invoice-data ">
-							netto 3
-						</div>
-		
-						<div class="invoice-data ">
-							Deadline:
-						</div>
-						<div class="invoice-data ">
-							30-07-2018
-						</div>
-		
-						<div class="invoice-data ">
-							Center to which customer belong:
-						</div>
-						<div class="invoice-data ">
-							monheim-am-rhein
-						</div>
-		
-						<div style="clear:both; "></div>	
-					</div>
-					<div style="clear:both; "></div>	
-			
-					<div class="table-responsive">          
-						<table class="table mt20">
-					    	<thead>
-					      		<tr class="table-heading-section ">
-							        <th>#</th>
-							        <th>Items &amp; Description</th>
-							        <th>Menge</th>
-							        <th>Satz</th>
-							        <th>Betrag</th>
-					      		</tr>
-					    	</thead>
-					    	<tbody>
-					      		<tr>
-							        <td>1</td>
-							        <td>Diamant membership basic
-							        	<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</td>
-							        <td>1</td>
-							        <td>399.90</td>
-							        <td>399.90</td>
-					      		</tr>
-					       		<tr>
-							        <td>1</td>
-							        <td>Diamant membership basic
-							        	<br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</td>
-							        <td>1</td>
-							        <td>399.90</td>
-							        <td>399.90</td>
-					      		</tr>
-						      	<tr>
-									<td colspan="2 ">&nbsp;</td>
-									<td colspan="2 ">Subtotal:</td>
-									<td>499.90</td>	
-							  	</tr>
-								<tr>
-									<td colspan="2 ">&nbsp;</td>
-									<td colspan="2 ">voll (19%):</td>
-									<td>94.98</td>	
-								</tr>
-								<tr>
-									<td colspan="2 ">&nbsp;</td>
-									<td colspan="2 ">Gesamt:</td>
-									<td>€ 594.88</td>	
-								</tr>
-								<tr>
-									<td colspan="2 ">&nbsp;</td>
-									<td colspan="2 ">Falliger saido:</td>
-									<td>€ 594.88</td>	
-								</tr>
-					    	</tbody>
-					  	</table>
-			  		</div>
-				</div>
-			</div>
-			<!-- Body -->
+            <!-- Body -->
+            <div class="pl20">
+                <div>
+                    <div class="invoice-sender">
+                        <div class="invoice-sender-head">B & G Office club Gmbh</div>
+                        <div class="invoice-sender-para">
+                            Handelregister HRB 82319
+                            <br/> Steuer Nr 206/5907/1339
+                            <br/> Bonn , 53173
+                            <br/> Germany
+                        </div>
+                    </div>
 
-			<!-- Footer -->
-			<div class="pl10">
-				<div class="invoice-bill">Bank details</div>
-					<div class="invoice-sender-para">
-						<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit
-		                <br>Lorem ipsum
-		                <br>Lorem ipsum dolor sit amet
-		                <br>
-					</div>
-				</div>
-			</div>
-			<!-- Footer --> 	
-		</div>	
-	<style>
-	.pdf-invoice{font-size:14px; font-weight:normal;margin-top:20px;}
-	.logo{font-size:15px; font-weight:bold;width:50%; float:left;}
-	.invoice-num{width:50%; float:right; text-align:right;}
-	.pl20{padding:20px;}
-	.mt{margin-top:5px;}
-	.invoice-sender{font-size:20px; font-weight:bold;width:50%; float:left;}
-	.invoice-sender-head{font-size:20px; font-weight:bold;}
-	.invoice-sender-para{margin-top:5px;font-size: 14px;font-weight: normal;}
-	.invoice-bill{margin-top:35px;font-size:20px; font-weight:bold;}
-	.invoice-bill-section{width:35%; float:left; }
-	.mt5{margin-top:5px;}
-	.invoice-section{width:65%; float:left; text-align:right; margin-top:35px;}
-	.invoice-data{margin-top:5px; width:50%; float:left; text-align:right;}
-	.table-heading-section th{color: #fff;background: #000;}
-	.pl10{padding:10px}
-	.mt20{margin-top:20px;}
-	.mybutton {
-	  position: fixed;
-	  top: 6px;
-	  right: 35px;
-	  margin-top:60px;
-	}
-	</style> 
-	{% endblock %}
+                    <div style="clear:both; "></div>
+                </div>
+                <div>
+                    <div class="invoice-bill-section">
+                        <div class="invoice-bill ">Against whom to bill </div>
+                        <div class="mt5 ">
+                            Euro collect GmbH<br/>
+                            Herr Eduard Muller<br/>
+                            monheim am Rhein<br/>
+                            70789 NRW<br/>
+                            Germany
+                        </div>
+                    </div>
+                    <div class="invoice-section ">
+                        <div class="invoice-data ">
+                            Invoice Date:
+                        </div>
+                        <div class="invoice-data ">
+                            28-07-2018
+                        </div>
+
+                        <div class="invoice-data ">
+                            Time to pay:
+                        </div>
+                        <div class="invoice-data ">
+                            netto 3
+                        </div>
+
+                        <div class="invoice-data ">
+                            Deadline:
+                        </div>
+                        <div class="invoice-data ">
+                            30-07-2018
+                        </div>
+
+                        <div class="invoice-data ">
+                            Center to which customer belong:
+                        </div>
+                        <div class="invoice-data ">
+                            monheim-am-rhein
+                        </div>
+
+                        <div style="clear:both; "></div>
+                    </div>
+                    <div style="clear:both; "></div>
+
+                    <div class="table-responsive">
+                        <table class="table mt20">
+                            <thead>
+                            <tr class="table-heading-section ">
+                                <th>#</th>
+                                <th>Items &amp; Description</th>
+                                <th>Menge</th>
+                                <th>Satz</th>
+                                <th>Betrag</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Diamant membership basic
+                                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</td>
+                                <td>1</td>
+                                <td>399.90</td>
+                                <td>399.90</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Diamant membership basic
+                                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</td>
+                                <td>1</td>
+                                <td>399.90</td>
+                                <td>399.90</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2 ">&nbsp;</td>
+                                <td colspan="2 ">Subtotal:</td>
+                                <td>499.90</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2 ">&nbsp;</td>
+                                <td colspan="2 ">voll (19%):</td>
+                                <td>94.98</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2 ">&nbsp;</td>
+                                <td colspan="2 ">Gesamt:</td>
+                                <td>€ 594.88</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2 ">&nbsp;</td>
+                                <td colspan="2 ">Falliger saido:</td>
+                                <td>€ 594.88</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Body -->
+
+            <!-- Footer -->
+            <div class="pl10">
+                <div class="invoice-bill">Bank details</div>
+                <div class="invoice-sender-para">
+                    <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <br>Lorem ipsum
+                    <br>Lorem ipsum dolor sit amet
+                    <br>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        </div>
+        <style>
+            .pdf-invoice{font-size:14px; font-weight:normal;margin-top:20px;}
+            .logo{font-size:15px; font-weight:bold;width:50%; float:left;}
+            .invoice-num{width:50%; float:right; text-align:right;}
+            .pl20{padding:20px;}
+            .mt{margin-top:5px;}
+            .invoice-sender{font-size:20px; font-weight:bold;width:50%; float:left;}
+            .invoice-sender-head{font-size:20px; font-weight:bold;}
+            .invoice-sender-para{margin-top:5px;font-size: 14px;font-weight: normal;}
+            .invoice-bill{margin-top:35px;font-size:20px; font-weight:bold;}
+            .invoice-bill-section{width:35%; float:left; }
+            .mt5{margin-top:5px;}
+            .invoice-section{width:65%; float:left; text-align:right; margin-top:35px;}
+            .invoice-data{margin-top:5px; width:50%; float:left; text-align:right;}
+            .table-heading-section th{color: #fff;background: #000;}
+            .pl10{padding:10px}
+            .mt20{margin-top:20px;}
+            .mybutton {
+                position: fixed;
+                top: 6px;
+                right: 35px;
+                margin-top:60px;
+            }
+        </style>
+    {% endblock %}

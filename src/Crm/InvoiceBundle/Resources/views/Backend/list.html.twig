@@ -55,8 +55,12 @@
                                     <a href="{{ path('crm_invoice_invoice_edit', { 'id': invoice.id }) }}">edit</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('app_user_show', { 'id': invoice.User.id }) }}">show</a>
+                                    <a href="{{ path('app_user_show', { 'id': invoice.id }) }}">show</a>
                                 </li>
+                                <li>
+                                    <a href="{{ path('crm_invoice_invoice_generate_pdf', { 'id': invoice.id }) }}">generate pdf</a>
+                                </li>
+
                             </ul>
                         </div>
                     </td>
@@ -66,7 +70,6 @@
         </table>
         <div class="navigation">
             {{ knp_pagination_render(pagination) }}
-            
         </div>
     </div>
     <div>

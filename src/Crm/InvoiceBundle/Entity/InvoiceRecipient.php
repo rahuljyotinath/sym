@@ -36,9 +36,9 @@ class InvoiceRecipient
     private $customerId = '';
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="user_id", type="string", length=16)
+     * @ORM\Column(name="user_id", type="integer")
      */
     private $userId = '';
 
@@ -54,14 +54,14 @@ class InvoiceRecipient
      *
      * @ORM\Column(name="first_name", type="string", length=255)
      */
-    private $firstName ='';
+    private $firstName = '';
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=255)
      */
-    private $lastName ='';
+    private $lastName = '';
 
     /**
      * @var string
@@ -127,9 +127,19 @@ class InvoiceRecipient
     private $gender = '';
 
     /**
+     * @param int $id
+     * @return InvoiceRecipient
+     */
+    public function setId($id): InvoiceRecipient
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -167,17 +177,17 @@ class InvoiceRecipient
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getUserId()
     {
         return $this->userId;
     }
 
     /**
-     * @param string $userId
+     * @param int $userId
      */
-    public function setUserId(string $userId)
+    public function setUserId($userId)
     {
         $this->userId = $userId;
     }
@@ -353,7 +363,7 @@ class InvoiceRecipient
     /**
      * @param \DateTime $birthday
      */
-    public function setBirthday(\DateTime $birthday)
+    public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
     }

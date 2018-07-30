@@ -33,11 +33,11 @@ class InvoiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            /*->add('id', FormType\TextType::class, array(
+            ->add('id', FormType\TextType::class, array(
                 'attr' => array(
                     'readonly' => true,
                 )
-            ))*/
+            ))
             ->add('customerId', FormType\TextType::class)
             ->add('locale', FormType\TextType::class)
             ->add('currency', FormType\TextType::class)
@@ -57,14 +57,15 @@ class InvoiceType extends AbstractType
             ->add('cancellation')
             ->add('cancellationPdfName')
             ->add('pdfName')
-            //->add('created')
-            //->add('updated')
+            ->add('pdfName')
+            ->add('created')
+            ->add('updated')
             ->add('recipient', RecipientType::class)
-            /*->add('invoicePositions', FormType\CollectionType::class, array(
+            ->add('invoicePositions', FormType\CollectionType::class, array(
                 'entry_type' => InvoicePositionType::class,
                 'allow_add' => true,
                 'allow_delete' => true
-            ))*/
+            ))
             ->add('user', EntityType::class, array(
                 'class' => User::class,
                 'choice_label' => 'username'
