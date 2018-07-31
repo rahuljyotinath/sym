@@ -1,16 +1,4 @@
 <?php
-
-/**
- * all code by me
- *
- * @copyright  Stefan H.G. Buchhofer
- * @version    Release: 1.0.0
- * @link       www.ilenvo-media.de
- * @email      ilenvo@me.com
- * @year       2016
- *
- */
-
 namespace Xintegro\BusinessCenterBundle\Controller;
 
 use AppBundle\Database\Manager as DatabaseManager;
@@ -70,7 +58,7 @@ class CenterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $centers = $em->getRepository('AppBundle:BusinessCenter')->findAll();
-        return $this->render('center/index.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:center:index.html.twig', array(
             'centers' => $centers,
             'page_title' => 'Business Center Management'
         ));
@@ -94,7 +82,7 @@ class CenterController extends Controller
             $em->flush();
             return $this->redirectToRoute('app_center_show', array('id' => $center->getId()));
         }
-        return $this->render('center/new.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:center:new.html.twig', array(
             'center' => $center,
             'form' => $form->createView(),
             'page_title' => 'Business Center Management'
@@ -113,7 +101,7 @@ class CenterController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        return $this->render('center/show.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:center:show.html.twig', array(
             'center' => $entity,
             'page_title' => 'Business Center Management'
         ));
@@ -143,7 +131,7 @@ class CenterController extends Controller
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('app_center_list', array('id' => $center->getId()));
         }
-        return $this->render('center/edit.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:center:edit.html.twig', array(
             'center' => $center,
             'edit_form' => $editForm->createView(),
             'page_title' => 'Business Center Management'

@@ -58,7 +58,7 @@ class PrivateSpaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $spaces = $em->getRepository('AppBundle:PrivateSpace')->findAll();
-        return $this->render('privatespace/index.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:privatespace:index.html.twig', array(
             'spaces' => $spaces,
             'page_title' => 'Private Space Management'
         ));
@@ -82,7 +82,7 @@ class PrivateSpaceController extends Controller
             $em->flush();
             return $this->redirectToRoute('app_private_show', array('id' => $privatespace->getId()));
         }
-        return $this->render('privatespace/new.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:privatespace:new.html.twig', array(
             'privatespace' => $privatespace,
             'form' => $form->createView(),
             'page_title' => 'Private Space Management'
@@ -101,7 +101,7 @@ class PrivateSpaceController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        return $this->render('privatespace/show.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:privatespace:show.html.twig', array(
             'privatespace' => $entity,
             'page_title' => 'Private Space Management'
         ));
@@ -130,7 +130,7 @@ class PrivateSpaceController extends Controller
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('app_private_list', array('id' => $privatespace->getId()));
         }
-        return $this->render('privatespace/edit.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:privatespace:edit.html.twig', array(
             'privatespace' => $privatespace,
             'edit_form' => $editForm->createView(),
             'page_title' => 'Private Space Management'
