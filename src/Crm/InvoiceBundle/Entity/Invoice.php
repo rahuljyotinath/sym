@@ -208,7 +208,7 @@ class Invoice
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -567,17 +567,6 @@ class Invoice
     }
 
     /**
-     * @param InvoicePosition[]|ArrayCollection $invoicePositions
-     * @return Invoice
-     */
-    public function setInvoicePositions($invoicePositions)
-    {
-        $this->invoicePositions = $invoicePositions;
-        return $this;
-    }
-
-
-    /**
      * @return string
      */
     public function getPdfName()
@@ -594,27 +583,6 @@ class Invoice
         $this->pdfName = $pdfName;
         return $this;
     }
-
-    /**
-     * @param \DateTime $created
-     * @return Invoice
-     */
-    public function setCreated(\DateTime $created): Invoice
-    {
-        $this->created = $created;
-        return $this;
-    }
-
-    /**
-     * @param \DateTime $updated
-     * @return Invoice
-     */
-    public function setUpdated(\DateTime $updated): Invoice
-    {
-        $this->updated = $updated;
-        return $this;
-    }
-
 
     /**
      * @return \DateTime

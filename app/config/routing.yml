@@ -15,13 +15,13 @@ app_individual:
     resource: "@AppBundle/Controller/IndividualController.php"
     type:     annotation
 
-app_center:
-    resource: "@AppBundle/Controller/CenterController.php"
-    type:     annotation
+#app_center:
+#    resource: "@AppBundle/Controller/CenterController.php"
+#    type:     annotation
 
-app_private:
-    resource: "@AppBundle/Controller/PrivateSpaceController.php"
-    type:     annotation
+#app_private:
+#    resource: "@AppBundle/Controller/PrivateSpaceController.php"
+#    type:     annotation
 
 pim_video:
     resource: "@PimVideoBundle/Controller/"

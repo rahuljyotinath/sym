@@ -1,0 +1,46 @@
+{% block subject %}[xintegro] Payment Receipt {% endblock %}
+
+{% block body_text %}
+	{% autoescape false %}
+		Hello,
+ 
+		Please find you attachment, to download and see your invoice.
+
+		Thank You,
+		Xintegro Team
+	{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+	<table width="100%" cellspacing="0" cellpadding="0" style="background: #f0f3f3 none repeat scroll 0 0;">
+			<tr>
+				<td valign="top" align="center">
+					<table width="600" cellspacing="0" cellpadding="0" style="background:#ffffff none repeat scroll 0 0;font-family:Helvetica,sans-serif;color:#202020;font-size:15px">
+						<tr>
+							<td style="background:rgba(0,0,0,0.7);padding:10px;">
+								<img src="{{ app.request.schemeAndHttpHost ~asset('assets/pdf/image/logo.png') }}" alt="Xintegro">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:10px 10px 10px 10px;">
+								Hello,
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:0px 10px 10px 10px">
+							<p>
+								Please find you attachment, to download and see your invoice.
+							</p>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:10px 10px 10px 10px;">
+							<p style="margin-bottom: 20px;">Thank you,<br/>Xintegro Team</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+		</table>	
+{% endblock %}

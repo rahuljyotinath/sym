@@ -2,3 +2,7 @@ services:
     crm_invoice.database.manager:
         class: Crm\InvoiceBundle\Database\Manager
         arguments: ['@doctrine']
+        
+    crm_mailer_handler:
+         class:  Crm\MailManager\TwigSwiftMailer
+         arguments: ['@service_container']  

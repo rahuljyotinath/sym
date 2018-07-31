@@ -46,6 +46,7 @@ twig:
 doctrine:
     dbal:
         driver:   pdo_mysql
+        server_version: 9.4
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -62,11 +63,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport: smtp
+    host: smtp.gmail.com
+    username: digtialwa@gmail.com
+    password: 025testdwa021
+    encryption: tls
+    port: 587
+    spool: { type: memory }
 
 fos_user:
     db_driver: orm
@@ -160,9 +163,17 @@ fm_elfinder:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf
-        options:    []
+        binary:     /usr/bin/xvfb-run /usr/bin/wkhtmltox/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    
+            lowquality: false
+            page-size: A4
+            dpi: 300
+            image-quality: 80
+            margin-left: 10mm
+            margin-right: 10mm
+            margin-top: 10mm
+            margin-bottom: 10mm
     image:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltoimage
+        binary:     /usr/bin/xvfb-run /usr/bin/wkhtmltox/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
         options:    []

@@ -242,7 +242,38 @@ class InvoiceController extends Controller
             throw $this->createNotFoundException('Unable to find invoice entity.');
         }
 
-        return $response = $this->render('CrmInvoiceBundle:Backend:confirmation.html.twig');
+        return $response = $this->render('CrmInvoiceBundle:Backend:confirmation.html.twig',array('id'=>$id));
 
+    }
+    
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
+     * @Route("/invoice-mail/{id}", name="crm_invoice_invoice_mail")
+     * @param Request $request
+     * @return Response
+     */
+    public function sendMailAction(Request $request, $id)
+    {
+        $mailHandler = $this->get('crm_mailer_handler');
+        $invoiceEntity = $this->dbM->repository()->invoice()->find($id);
+        if (!$invoiceEntity) {
+            throw $this->createNotFoundException('Unable to find invoice entity.');
+        }
+        $pdf_path = $this->container->getParameter('pdf_store_path');
+        $filename = sha1(time()).'.pdf';
+        $filepathname = $pdf_path.$filename;
+        $snappy = $this->get('knp_snappy.pdf');
+        $body = $this->renderView('CrmInvoiceBundle:Backend:invoicePdf.html.twig',array('entity' => $invoiceEntity));
+        $snappy->generateFromHtml($body,$filepathname);
+        $filepathname = realpath($filepathname);
+		$templateName = 'Emails/invoice.html.twig';
+		$context = array();
+		$fromEmail = 'ngupta4@gmail.com';
+		$toEmail  = 'nileshkumar.gupta4@gmail.com';
+		$senderName = 'Nilesh';
+		$send = $this->get('crm_mailer_handler')->sendMessage($templateName, $context, $fromEmail, $toEmail, $senderName, $filepathname, $filename);
+        return $this->redirect($this->generateUrl('crm_invoice_invoice_list'));
+        
+        //Note: In symfony3.3 you must return the or redirect it otherwise email not sent. 
     }
 }
