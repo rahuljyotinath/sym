@@ -6,13 +6,13 @@
 {{ form_start(new_form) }}
 <form class="well" method="post" novalidate>
     <div class="row">
-        <div class="col-xs-4">
+        {# <div class="col-xs-4">
             <div class="form-group">
                 {{ form_label(new_form.id) }}
                 {{ form_errors(new_form.id) }}
                 {{ form_widget(new_form.id) }}
             </div>
-        </div>
+        </div> #}
         <div class="col-xs-4">
             <div class="form-group">
                 {{ form_label(new_form.customerId) }}
@@ -35,7 +35,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xs-12">
             <div id="invoicePositions-fields-list" style="margin:20px;"
@@ -51,7 +50,7 @@
         </div>
     </div>
     {{ form_widget(new_form) }}
-    <input class="btn btn-info" type="submit" value="Create" />
+    	<input class="btn btn-info" type="submit" value="Create" />
     {{ form_end(new_form) }}
 
     <ul>

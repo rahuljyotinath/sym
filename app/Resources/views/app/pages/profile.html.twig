@@ -179,6 +179,8 @@
                           </li>
                           <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
                           </li>
+                          <li role="presentation" class=""><a href="#tab_content4" role="tab" id="company-tab" data-toggle="tab" aria-expanded="false">Companies</a>
+                          </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
@@ -321,6 +323,57 @@
                             <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
                               photo booth letterpress, commodo enim craft beer mlkshk </p>
                           </div>
+                          
+                          <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+						 
+                            <!-- start user projects -->
+                            <form name="mapped_companies" action="{{path('map_companies')}}" method="post" />
+                            <table class="data table table-striped no-margin">
+                              <thead>
+                                <tr>
+                                  <th><input type="checkbox" id="jscheckall" /></th>
+                                  <th>Company Name</th>
+                                  <th>Company Address</th>
+                                  <th>Email</th>
+                                  <th>Telephone</th>
+                                  <th>Website</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              	
+                              	{% if companies|length>0 %}
+                              	{% set companyIds = [] %}
+                              	{% for mappedcompany in mappedCompnaies %}
+                              		{% set companyIds = companyIds|merge([mappedcompany.id]) %}
+                              	{% endfor %}
+                              	{% for company in companies %}
+                                <tr>
+                                  <td><input type="checkbox" name="company[]" class="jscheckCompany" value="{{company.id}}" {{(company.id in companyIds)?'checked="checked"':''}}></td>
+                                  <td>{{company.name}}</td>
+                                  <td>{{company.adress}}</td>
+                                  <td>{{company.email}}</td>
+                                  <td>{{company.tel}}</td>
+                                  <td>{{company.website}}</td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                <tr>
+                                	<td colspan="6">No records found.</td>
+                                </tr>
+                                {% endif %}
+                              </tbody>
+                              {% if companies|length>0 %}
+                              <tfoot>
+                                <tr>
+                                  <th colspan="6"><button type="submit" class="btn btn-success" >Map companies</button></th>
+                                </tr>
+                              </tfoot>
+                              {% endif %}
+                            </table>
+                            </form>
+                            <!-- end user projects -->
+
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -380,7 +433,22 @@
     <!-- datepicker -->
     <script type="text/javascript">
       $(document).ready(function() {
-
+		
+		$(document).on('click','#jscheckall',function(){
+			if($('.jscheckCompany').length >0){
+				if($(this). prop("checked") == true){
+					$('.jscheckCompany').each(function(){
+						$(this). prop("checked",true);
+					});
+				}else{
+					$('.jscheckCompany').each(function(){
+						$(this). prop("checked",false);
+					});
+				}
+			}
+			
+		});
+		
         var cb = function(start, end, label) {
           console.log(start.toISOString(), end.toISOString(), label);
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));

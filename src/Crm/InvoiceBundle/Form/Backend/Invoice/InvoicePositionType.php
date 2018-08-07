@@ -31,24 +31,24 @@ class InvoicePositionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', FormType\TextType::class, array(
+            /*->add('id', FormType\TextType::class, array(
                 'attr' => array(
                     'readonly' => true,
                 )
-            ))
-            ->add('sku')
+            ))*/
+            //->add('sku')
             ->add('title')
             ->add('descriptionOne')
-            ->add('descriptionTwo')
-            ->add('descriptionImage')
+            //->add('descriptionTwo')
+            //->add('descriptionImage')
             ->add('quantity')
             ->add('netPrice')
-            ->add('grossPrice')
-            ->add('netPriceTotal')
+            //->add('grossPrice')
             ->add('grossPriceTotal')
             ->add('vatRate')
             ->add('vatPrice')
-            ->add('vatPriceTotal');
+            ->add('netPriceTotal');
+            //->add('vatPriceTotal');
     }
 
     /**

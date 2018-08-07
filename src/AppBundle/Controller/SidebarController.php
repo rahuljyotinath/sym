@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 /**
  * Class SidebarController
  * @package AppBundle\Controller
@@ -20,7 +20,13 @@ class SidebarController extends Controller
      */
     public function dashboardAction(Request $request)
     {
-        return $this->render('app/pages/dashboard.html.twig', []);
+    	$userObj =$this->container->get('security.token_storage')->getToken()->getUser();
+    	if(is_object($userObj)){
+    		return $this->render('app/pages/dashboard.html.twig', []);
+    	}else{
+    		$url = $this->generateUrl('fos_user_security_login');
+    		return new RedirectResponse($url);
+    	}
     }
 
     /**

@@ -33,11 +33,11 @@ class InvoiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', FormType\TextType::class, array(
+            /*->add('id', FormType\TextType::class, array(
                 'attr' => array(
                     'readonly' => true,
                 )
-            ))
+            ))*/
             ->add('customerId', FormType\TextType::class)
             ->add('locale', FormType\TextType::class)
             ->add('currency', FormType\TextType::class)

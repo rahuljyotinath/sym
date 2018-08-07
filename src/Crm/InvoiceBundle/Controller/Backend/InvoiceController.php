@@ -23,6 +23,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class InvoiceController
@@ -129,20 +130,12 @@ class InvoiceController extends Controller
      */
     public function newAction(Request $request)
     {
-
-
         $newForm = $this->createForm(InvoiceType::class);
-
         $newForm->handleRequest($request);
-
         if ($newForm->isValid() && $newForm->isSubmitted()) {
-
             $invoiceEntity = $newForm->getData();
-
-
             $this->dbM->entityManager()->persist($invoiceEntity);
             $this->dbM->entityManager()->flush();
-
             $this->get('session')->getFlashBag()->add('success', 'Invoice stored');
             return $this->redirect($this->generateUrl('crm_invoice_invoice_list'));
         }
