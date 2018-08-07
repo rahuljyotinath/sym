@@ -24,14 +24,31 @@ class Templates
      *
      * @ORM\Column(name="customer_id", type="string", length=36, nullable=true)
      */
-    private $customerId = '';
-
+    private $customerId;
+   
+    /**
+     * @var Invoice
+     *
+     * @ORM\ManyToOne(
+     *     targetEntity="AppBundle\Entity\Company",
+     *     inversedBy="template"
+     * )
+     */
+    private $company;
+	 
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="template_name", type="string", length=255, nullable=true)
+     */
+    private $templateName;
+    
     /**
      * @var integer
      *
      * @ORM\Column(name="template", type="text", nullable=true)
      */
-    private $template = '';
+    private $template;
 
     /**
      * @var \DateTime
@@ -53,53 +70,110 @@ class Templates
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->updated = $this->created; 
     }
+ 
+   
 
     /**
+     * Get id.
+     *
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * Set customerId.
+     *
+     * @param string|null $customerId
+     *
+     * @return Templates
      */
-    public function getCustomerId(): string
+    public function setCustomerId($customerId = null)
+    {
+        $this->customerId = $customerId;
+
+        return $this;
+    }
+
+    /**
+     * Get customerId.
+     *
+     * @return string|null
+     */
+    public function getCustomerId()
     {
         return $this->customerId;
     }
 
     /**
-     * @param string $customerId
-     * @return Invoice
+     * Set templateName.
+     *
+     * @param string|null $templateName
+     *
+     * @return Templates
      */
-    public function setCustomerId(string $customerId): Templates
+    public function setTemplateName($templateName = null)
     {
-        $this->customerId = $customerId;
+        $this->templateName = $templateName;
+
         return $this;
     }
 
     /**
-     * @return int
+     * Get templateName.
+     *
+     * @return string|null
      */
-    public function getTemplate(): int
+    public function getTemplateName()
+    {
+        return $this->templateName;
+    }
+
+    /**
+     * Set template.
+     *
+     * @param string|null $template
+     *
+     * @return Templates
+     */
+    public function setTemplate($template = null)
+    {
+        $this->template = $template;
+
+        return $this;
+    }
+
+    /**
+     * Get template.
+     *
+     * @return string|null
+     */
+    public function getTemplate()
     {
         return $this->template;
     }
 
     /**
-     * @param int $template
+     * Set created.
+     *
+     * @param \DateTime $created
+     *
      * @return Templates
      */
-    public function setTemplate(int $template): Templates
+    public function setCreated($created)
     {
-        $this->template = $template;
+        $this->created = $created;
+
         return $this;
     }
 
     /**
+     * Get created.
+     *
      * @return \DateTime
      */
     public function getCreated()
@@ -108,6 +182,22 @@ class Templates
     }
 
     /**
+     * Set updated.
+     *
+     * @param \DateTime $updated
+     *
+     * @return Templates
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated.
+     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -116,19 +206,26 @@ class Templates
     }
 
     /**
-     * @ORM\PreUpdate
+     * Set company.
+     *
+     * @param \AppBundle\Entity\Company|null $company
+     *
+     * @return Templates
      */
-    public function onPreUpdate()
+    public function setCompany(\AppBundle\Entity\Company $company = null)
     {
-        $this->updated = new \DateTime();
+        $this->company = $company;
+
+        return $this;
     }
 
     /**
-     * @ORM\PrePersist
+     * Get company.
+     *
+     * @return \AppBundle\Entity\Company|null
      */
-    public function onPrePersist()
+    public function getCompany()
     {
-        $this->updated = new \DateTime();
-        $this->created = new \DateTime();
+        return $this->company;
     }
 }

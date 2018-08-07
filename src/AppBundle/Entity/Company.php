@@ -71,7 +71,18 @@ class Company
      * @var string|null
      */
     private $website;
-
+	 
+    /**
+     * @var ArrayCollection|Templates[]
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="Crm\InvoiceBundle\Entity\Templates",
+     *     mappedBy="company",
+     *     cascade={"ALL"}
+     * )
+     */
+    private $template;
+    
     /**
      * Company constructor.
      */
@@ -79,6 +90,7 @@ class Company
     {
         $this->users = new ArrayCollection();
         $this->individuals = new ArrayCollection();
+        $this->template = new ArrayCollection();
     }
 
     /**
@@ -257,5 +269,77 @@ class Company
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Add individual.
+     *
+     * @param \AppBundle\Entity\Individual $individual
+     *
+     * @return Company
+     */
+    public function addIndividual(\AppBundle\Entity\Individual $individual)
+    {
+        $this->individuals[] = $individual;
+
+        return $this;
+    }
+
+    /**
+     * Remove individual.
+     *
+     * @param \AppBundle\Entity\Individual $individual
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeIndividual(\AppBundle\Entity\Individual $individual)
+    {
+        return $this->individuals->removeElement($individual);
+    }
+
+    /**
+     * Get individuals.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndividuals()
+    {
+        return $this->individuals;
+    }
+
+    /**
+     * Add template.
+     *
+     * @param \Crm\InvoiceBundle\Entity\Templates $template
+     *
+     * @return Company
+     */
+    public function addTemplate(\Crm\InvoiceBundle\Entity\Templates $template)
+    {
+        $this->template[] = $template;
+
+        return $this;
+    }
+
+    /**
+     * Remove template.
+     *
+     * @param \Crm\InvoiceBundle\Entity\Templates $template
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeTemplate(\Crm\InvoiceBundle\Entity\Templates $template)
+    {
+        return $this->template->removeElement($template);
+    }
+
+    /**
+     * Get template.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTemplate()
+    {
+        return $this->template;
     }
 }

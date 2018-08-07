@@ -100,9 +100,7 @@ class InvoiceController extends Controller
                 'individuals' => $this->dbM->data()->formHelper()->getIndividialSelectArray()
             ]
         );
-
         $newForm->handleRequest($request);
-
         if ($newForm->isValid() && $newForm->isSubmitted()) {
             $selectionForm = $newForm->getData();
 

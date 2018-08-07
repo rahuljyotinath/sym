@@ -54,6 +54,18 @@ class Factory
 
         return $this->setter[__FUNCTION__];
     }
+    
+    /**
+     * @return EntityRepository
+     */
+    public function company(): EntityRepository
+    {
+    	if (!isset($this->setter[__FUNCTION__])) {
+    		$this->setter[__FUNCTION__] = $this->ormEm->getRepository('AppBundle:Company');
+    	}
+    
+    	return $this->setter[__FUNCTION__];
+    }
 
     /**
      * @return EntityRepository
