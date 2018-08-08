@@ -5,20 +5,7 @@
 
     {{ form_start(new_form) }}
         {{ form_widget(new_form) }}
-        <input class="btn btn-info" type="submit" value="Create" />
     {{ form_end(new_form) }}
 
      <a class="btn btn-info" href="{{ path('crm_invoice_template_list') }}">Back to the list</a>
 {% endblock %}
-{% block addJavascripts %}
- <script src="{{asset('assets/js/ckeditor/ckeditor.js')}}"></script> 
-  <script>
-    $(document).ready(function() {
-        /*
-         To create instance of ckeditor
-         Add upload file option from local machine
-        */
- 	    CKEDITOR.replace('templates_template', {});
- 	});
- </script>	    
-{% endblock addJavascripts %}

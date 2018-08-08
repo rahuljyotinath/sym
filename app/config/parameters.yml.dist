@@ -18,3 +18,4 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
     pdf_store_path: '%kernel.project_dir%/app/pdf/'
+    pdf_template_path: '%kernel.project_dir%/invoice_templates/'

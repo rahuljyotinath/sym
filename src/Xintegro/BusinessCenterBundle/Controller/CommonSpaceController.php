@@ -50,7 +50,6 @@ class CommonSpaceController extends Controller
 
     /**
      * @Route("/list", name="app_common_list")
-     * @Template()
      * @param Request $request
      * @return Response
      */
@@ -58,7 +57,7 @@ class CommonSpaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $spaces = $em->getRepository('AppBundle:CommonSpace')->findAll();
-        return $this->render('XintegroBusinessCenterBundle:commonspace:index.html.twig', array(
+        return $this->render('@XintegroBusinessCenter/common_space/index.html.twig', array(
             'spaces' => $spaces,
             'page_title' => 'Common Space Management'
         ));
@@ -66,7 +65,6 @@ class CommonSpaceController extends Controller
 
     /**
      * @Route("/new", name="app_common_new")
-     * @Template()
      * @param Request $request
      * @return Response
      */
@@ -82,7 +80,7 @@ class CommonSpaceController extends Controller
             $em->flush();
             return $this->redirectToRoute('app_common_show', array('id' => $commonspace->getId()));
         }
-        return $this->render('XintegroBusinessCenterBundle:commonspace:new.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:center:new.html.twig', array(
             'commonspace' => $commonspace,
             'form' => $form->createView(),
             'page_title' => 'Common Space Management'
@@ -91,7 +89,6 @@ class CommonSpaceController extends Controller
 
     /** 
      * @Route("/{id}/show", name="app_common_show")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -101,7 +98,7 @@ class CommonSpaceController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        return $this->render('XintegroBusinessCenterBundle:commonspace:show.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:common_space:show.html.twig', array(
             'commonspace' => $entity,
             'page_title' => 'Common Space Management'
         ));
@@ -109,7 +106,6 @@ class CommonSpaceController extends Controller
 
     /**
      * @Route("/{id}/edit", name="app_common_edit")
-     * @Template()
      */
     public function editAction(Request $request, $id)
     {
@@ -122,7 +118,7 @@ class CommonSpaceController extends Controller
         
         $commonspace = $entity;
         
-        $editForm = $this->createForm('AppBundle\Form\CommonSpaceType', $commonspace)
+        $editForm = $this->createForm(Form\CommonSpaceType::class, $commonspace)
             ->add('center')
             ->add('update', SubmitType::class, array('label' => 'Update Common Space', 'attr' => ['class' => 'btn-success']))
        ;
@@ -132,7 +128,7 @@ class CommonSpaceController extends Controller
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('app_common_list', array('id' => $commonspace->getId()));
         }
-        return $this->render('XintegroBusinessCenterBundle:commonspace:edit.html.twig', array(
+        return $this->render('XintegroBusinessCenterBundle:common_space:edit.html.twig', array(
             'commonspace' => $commonspace,
             'edit_form' => $editForm->createView(),
             'page_title' => 'Common Space Management'
@@ -141,7 +137,6 @@ class CommonSpaceController extends Controller
 
     /**
      * @Route("/{id}/delete", name="app_common_delete")
-     * @Template()
      */
     public function deleteAction(Request $request, $id)
     {

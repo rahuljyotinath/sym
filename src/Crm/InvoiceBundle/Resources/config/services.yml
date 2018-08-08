@@ -5,4 +5,8 @@ services:
         
     crm_mailer_handler:
          class:  Crm\MailManager\TwigSwiftMailer
-         arguments: ['@service_container']  
+         arguments: ['@service_container']
+
+    crm_invoice.api.manger:
+         class: Crm\InvoiceBundle\Api\Manger
+         arguments: ['@service_container']

@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Office Lounge</title>
+    <style>body {
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+<div style='width:100%;'>
+    <!-- Header -->
+    <div style='padding:20px;'>
+        <div style="width:100%;">
+            <div style="font-size:15px; font-weight:bold;width:50%; float:left;">
+                <img src="{{ app.request.schemeAndHttpHost ~asset('assets/pdf/image/logo.png') }}" height="104"
+                     alt="Blue Office Lounge" align="left">
+            </div>
+            <div style="width:50%; float:right; text-align:right;">
+                <div style="margin-top:5px;">Invoice Number : INV-00549 {{ entity.invoiceId }}</div>
+                <div style="margin-top:5px;">Total Amount : €
+                    594.88 {{ entity.grossPriceTotal }} {{ entity.currency }}</div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <!-- Header -->
+
+
+    <!-- Body -->
+    <div style='padding:20px;'>
+        <div style="width:100%;">
+            <div style="font-size:20px; font-weight:bold;width:50%; float:left;">
+                <div style="font-size:20px; font-weight:bold;">B & G Office club Gmbh</div>
+                <div style="margin-top:5px;font-size:18px; font-weight:normal;">
+                    Handelregister HRB 82319<br/>
+                    Steuer Nr 206/5907/1339<br/>
+                    Bonn , 53173<br/>
+                    Germany
+                </div>
+            </div>
+            <div width:65%; text-align:right;float:right;
+            ">
+            &nbsp;
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div style="width:100%;">
+        <div style="width:35%; float:left;">
+            <div style="margin-top:35px;font-size:20px; font-weight:bold;">Against whom to bill</div>
+            <div style="margin-top:5px;font-size:18px; font-weight:normal;">
+                Euro collect GmbH<br/>
+                Herr Eduard Muller<br/>
+                monheim am Rhein<br/>
+                70789 NRW<br/>
+                Germany
+            </div>
+        </div>
+        <div style="width:65%; float:left; text-align:right;">
+            <div style="margin-top:35px; width:50%; float:left; text-align:right;">
+                Invoice Date:
+            </div>
+            <div style="margin-top:35px; width:50%; float:left; text-align:right;">
+                28-07-2018
+            </div>
+            <div style="margin-top:5px; width:50%; float:left; text-align:right;">
+                Time to pay:
+            </div>
+            <div style="margin-top:5px; width:50%; float:left; text-align:right;">
+                netto 3
+            </div>
+            <div style="margin-top:5px; width:50%; float:left; text-align:right;">
+                Deadline:
+            </div>
+            <div style="margin-top:5px; width:50%; float:left; text-align:right;">
+                30-07-2018
+            </div>
+            <div style="margin-top:5px; width:50%; float:left; text-align:right;">
+                Center to which customer belong:
+            </div>
+            <div style="margin-top:5px; width:50%; float:left; text-align:right;">
+                monheim-am-rhein
+            </div>
+            <div style="clear:both;"></div>
+
+
+        </div>
+        <div style="clear:both;"></div>
+
+        <table style="margin-top:35px; width:100%;max-width: 100%;margin-bottom:10px; border-spacing:0; border-collapse: collapse;">
+
+            <thead style="color:#fff; background:#000;">
+            <th style="padding:7px; line-height:1.2; text-align:center;">#</th>
+            <th style="padding:7px; line-height:1.2; text-align:center;">Items &amp; Description</th>
+            <th style="padding:7px; line-height:1.2; text-align:center;">Menge</th>
+            <th style="padding:7px; line-height:1.2; text-align:center;">Satz</th>
+            <th style="padding:7px; line-height:1.2; text-align:center;">Betrag</th>
+            </thead>
+
+            <tbody>
+
+            {% for position in entity.invoicePositions %}
+                <tr>
+                    <td style="padding:7px; line-height:1.2; text-align:center;">1</td>
+                    <td style="padding:7px; line-height:1.2; text-align:left;">{{ position.title }}
+                        <br> {{ position.descriptionOne }}/td>
+                    <td style="padding:7px; line-height:1.2; text-align:center;">1</td>
+                    <td style="padding:7px; line-height:1.2; text-align:right;">399.90</td>
+                    <td style="padding:7px; line-height:1.2; text-align:right;">399.90</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td style="border-top: 1px solid #ddd;padding:7px; line-height:1.2; text-align:center;">2</td>
+                <td style="border-top: 1px solid #ddd;padding:7px; line-height:1.2; text-align:left;">Diamant membership
+                    basic
+                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                </td>
+                <td style="border-top: 1px solid #ddd;padding:7px; line-height:1.2; text-align:center;">1</td>
+                <td style="border-top: 1px solid #ddd;padding:7px; line-height:1.2; text-align:right;">399.90</td>
+                <td style="border-top: 1px solid #ddd;padding:7px; line-height:1.2; text-align:right;">399.90</td>
+            </tr>
+
+            <tr>
+                <td colspan="5" style="border-top: 1px solid #ddd;"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:right;">&nbsp;</td>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:right;">Subtotal:</td>
+                <td style="padding:7px; line-height:1.2; text-align:right;">499.90</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:center;">&nbsp;</td>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:right;">voll (19%):</td>
+                <td style="padding:7px; line-height:1.2; text-align:right;">94.98</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:center;">&nbsp;</td>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:right;">Gesamt:</td>
+                <td style="padding:7px; line-height:1.2; text-align:right;">€ 594.88</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:center;">&nbsp;</td>
+                <td colspan="2" style="padding:7px; line-height:1.2; text-align:right;">Falliger saido:</td>
+                <td style="padding:7px; line-height:1.2; text-align:right;">€ 594.88</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<!-- Body -->
+
+<!-- Footer -->
+<div style='padding:10px;'>
+    <div style="margin-top:35px;font-size:20px; font-weight:bold;">Bank details</div>
+    <div style="margin-top:5px;font-size:18px; font-weight:normal;">
+        <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        <br>Lorem ipsum
+        <br> Lorem ipsum dolor sit amet
+        <br>
+    </div>
+</div>
+</div>
+<!-- Footer -->
+</div>
+</body>
+</html>

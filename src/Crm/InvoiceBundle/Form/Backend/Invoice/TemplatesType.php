@@ -11,6 +11,7 @@
  */
 
 namespace Crm\InvoiceBundle\Form\Backend\Invoice;
+
 use AppBundle\Entity\Company;
 use Crm\InvoiceBundle\Entity\Templates;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -32,14 +33,15 @@ class TemplatesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('templateName',  FormType\TextType::class)
-        		->add('template',  FormType\TextareaType::class)
-	            ->add('company', EntityType::class, array(
-	                 'class' => Company::class,
-                	'choice_label' => 'name'
-	            ))
-        
-        ;
+
+        $builder->add('templateName', FormType\TextType::class)
+            ->add('template', FormType\ChoiceType::class, array(
+                'choices' => $options['invoice_templates']
+            ))
+            ->add('company', EntityType::class, array(
+                'class' => Company::class,
+                'choice_label' => 'name'
+            ));
     }
 
     /**
@@ -48,7 +50,8 @@ class TemplatesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Templates::class
+            'data_class' => Templates::class,
+            'invoice_templates' => []
         ));
     }
 

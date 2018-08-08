@@ -11,3 +11,4 @@ parameters:
     mailer_password: null
     secret: 86038f6b3e4bfc353aa4b83c526cd4a5d02b1bf8
     pdf_store_path: '%kernel.project_dir%/app/pdf/'
+    pdf_template_path: '%kernel.project_dir%/invoice_templates/'
